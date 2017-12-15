@@ -1,5 +1,5 @@
 body {
-  background: #2d343d;
+  background: #FFFFFF;
 }
 
 .login {
@@ -41,10 +41,10 @@ h1.login-title {
   height: 50px;
   padding: 0;
   font-size: 20px;
-  color: #fff;
+  color: #DB291c;
   text-align: center;
-  background: #f0776c;
-  border: 0;
+  background: #DB291c;
+  border: 0;0
   border-radius: 5px;
   cursor: pointer;
   outline:0;

@@ -64,7 +64,7 @@ html{-webkit-font-smoothing:antialiased;}
 a{color:#BA0707;}
 a:hover{color:#BA0707;text-decoration:underline;}
 
-body{background:#ffffff url("../images/bkg.jpg") no-repeat 0 0;
+body{background:#ffffff /*url("../images/bkg.jpg")*/ no-repeat 0 0;
 color:#3E4156;
 font: 14px "Open Sans", Helvetica, Arial, sans-serif;
 -webkit-font-smoothing: antialiased;
@@ -89,12 +89,12 @@ p,div, span{line-height:1.5em;}
 
 .title{margin:100px 0 20px 0;
 text-align:center;
-color:#3E4156;}
+color:#DB291c;}
 .back{text-align:center;}
 
 nav{display:block;
 margin-top: 100px;
-background:#3E4156;
+background:#DB291c;
 }
 
 .menu{display:block;}
