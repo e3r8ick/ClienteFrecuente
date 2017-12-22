@@ -4,6 +4,7 @@
 
 		//funcion publica para obtener una instancia de la conexion a la BD
 		public function get_Conexion(){
+			echo "<script>console.log( 'Debug Objects: " . "sirve2" . "' );</script>";
 			$host='127.0.0.1';
 			//Esta conexion debe poseer la facilidad de realizar inserts, updates y selects
 
@@ -19,16 +20,15 @@
 
 			//este usuario solo debe poder realizar selects.
 			//se determina el usuario de la base de datos
-			$db_username = "TECNO";
+			$db_username = "FRECUENtE";
 			//se determina la clave del usuario de la Base de datos.
-			$db_password = "TECNO";
+			$db_password = "FRECUENTE";
 
 			//se realiza un try catch de
 			try{
 			    $conn = new PDO("oci:dbname=".$tns,$db_username,$db_password);
 			    //$conn->exec("SET CHARACTER SET utf8");
 			    return $conn;
-			    //echo "conectado";
 			}catch(PDOException $e){
 			    echo ($e->getMessage());
 			    return 'Error al conectar';
