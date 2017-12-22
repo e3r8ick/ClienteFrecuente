@@ -16,7 +16,7 @@ public function LoginUser($Ppassword, $Pusuario){
   $conexion = $con->get_Conexion();
 
   //se crea la sentencia SQL
-  $sql = "SELECT COD_CLIENTE, CONTRASENIA FROM GEN_CLIENTE WHERE COD_CLIENTE = ? AND CONTRASENIA = ? ";
+  $sql = "SELECT COD_CLIENTE, NOM_CLIENTE, CEDULA, NUM_TELEFONO1, NUM_TELEFONO2, NUM_FAX, EMAIL, DIRECCION_ENVIO, CONTRASENIA FROM GEN_CLIENTE WHERE COD_CLIENTE = ? AND CONTRASENIA = ?";
 
   //se prepara el statement con la sentencia previamente creada
   $stmt = $conexion->prepare($sql);
