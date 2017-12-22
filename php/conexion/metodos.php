@@ -6,20 +6,17 @@ class Metodos{
 // *************************** LOGIN USER *****************************************//
 
 //se reciben por parametros las variables necesarias para realizar la validacion del login.
-public function LoginUser($Ppassword, $Pusuario, $Pcia, $Psucursal){
+public function LoginUser($Ppassword, $Pusuario){
 
   //se limpian las variables
   $Ppassword = $this->limpiarVariable($Ppassword);
   $Pusuario = $this->limpiarVariable($Pusuario);
-  $Pcia = $this->limpiarVariable($Pcia);
-  $Psucursal = $this->limpiarVariable($Psucursal);
-
   //se instancia la clase conexion y se le otorga el string de conexion a una nueva variable
   $con = new Conexion();
   $conexion = $con->get_Conexion();
 
   //se crea la sentencia SQL
-  $sql = "SELECT COD_USUARIO, DES_USUARIO, COD_CIA, SUCURSAL, CLAVE_USUARIO, TIPO, COD_AGENTE FROM WEBLOGINVIEW WHERE COD_USUARIO = ? AND  CLAVE_USUARIO = ? AND COD_CIA = ? AND SUCURSAL = ? ";
+  $sql = "SELECT COD_CLIENTE, CONTRASENIA FROM GEN_CLIENTE WHERE COD_CLIENTE = ? AND CONTRASENIA = ? ";
 
   //se prepara el statement con la sentencia previamente creada
   $stmt = $conexion->prepare($sql);
@@ -28,7 +25,7 @@ public function LoginUser($Ppassword, $Pusuario, $Pcia, $Psucursal){
     //se realiza un execute y un fetch donde se obtienen los datos de la primera fila
     //que coincida con el usuario y la clave ademas del cia.
     //en el execute se agregan las variables por medio de un array.
-    $stmt->execute(array($Pusuario, $Ppassword, $Pcia, $Psucursal));
+    $stmt->execute(array($Pusuario, $Ppassword));
     $result = $stmt->fetch();
 
     //se cierra la conexion

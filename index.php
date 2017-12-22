@@ -4,13 +4,13 @@ session_start();
 //se valida si ya hay una sesion existente
 if (isset($_SESSION['username'])) {
 	//si existe una sesion, se redirecciona al usuario a la pantalla de inicio.
-	header('location: user/index.php');
+	header('location: index.php');
 }
 
 ?>
 <LINK REL=StyleSheet HREF="css/login.css" TYPE="text/css">
 
-<form class="login" action="php/login.php" method="post">
+<form class="login" action="php/metodos/login.php" method="post">
     <h1 class="login-title">Cliente Frecuente</h1>
     <input type="text" class="login-input" placeholder="Cod Cliente" autofocus required="true">
     <input type="password" class="login-input" placeholder="Contraseña" required="true">
