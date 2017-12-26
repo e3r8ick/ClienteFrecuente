@@ -12,8 +12,8 @@ if (isset($_SESSION['username'])) {
 
 <form class="login" action="php/metodos/login.php" method="post">
     <h1 class="login-title">Cliente Frecuente</h1>
-    <input type="text" class="login-input" placeholder="Cod Cliente" autofocus required="true">
-    <input type="password" class="login-input" placeholder="Contraseña" required="true">
+    <input type="text" name="username" id="username" class="login-input" placeholder="Cod Cliente" autofocus required="true">
+    <input type="password" name="password" id="password" class="login-input" placeholder="Contraseña" required="true">
     <input type="submit" value="Ingresar" class="login-button">
     <p class="login-lost"><a href="php/registro.php">¿No tiene cuenta? Registrar</a></p>
   </form>
@@ -21,5 +21,7 @@ if (isset($_SESSION['username'])) {
   <?php
     //se incluyen los archivos necesarios.
     require_once ('php/conexion/conexion.php');
+		require_once ('php/conexion/metodos.php');
     echo "<script>console.log( 'Debug Objects: " . "sirve1". "' );</script>";
+
   ?>

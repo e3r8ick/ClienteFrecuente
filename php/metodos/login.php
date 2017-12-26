@@ -3,6 +3,9 @@
 //se inicializa la sesion
 session_start();
 
+//Print de prueba
+echo "<script>console.log( 'Debug Objects: " . "entro". "' );</script>";
+
 if (isset($_SESSION['username'])) {//se valida si ya esta una sesion activa.
 	header('location: ../../index.php');
 }
@@ -25,26 +28,26 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
 	//se valida que el resultado traiga datos, en caso de que no traiga nada
 	//el usuario no existe o las credenciales no coinciden.
-	if ($result['COD_USUARIO'] != null) {
+	if ($result['COD_CLIENTE'] != null) {
 
 		//se valida que el resultado del query y los datos introducidos sean correctos.
-		if ($user == $result['COD_USUARIO'] && $pass == $result['CLAVE_USUARIO']) {
+		if ($user == $result['COD_CLIENTE'] && $pass == $result['CONTRASENIA']) {
 
 			//se establecen las variables de sesion iniciales.
-			$_SESSION['username'] = $result['COD_USUARIO'];
-			$_SESSION['nombre-usuario'] = $result['DES_USUARIO'];
+			$_SESSION['username'] = $result['COD_CLIENTE'];
+			//$_SESSION['nombre-usuario'] = $result['DES_USUARIO'];
 
 			//y se redirecciona a la pagina de inicio del usuario.
 			header('location: ../../index.php');
 
 		}else{
 			//se redirecciona al login con un mensaje de error
-			header('location: ../../index.php?msg=DATOS INCORRECTOS.');
+			header('location: ../../index.php?msg=DATOS INCORRECTOS1.');
 		}
 
 	}else{
 		//se redirecciona al login con un mensaje de error
-		header('location: ../../index.php?msg=DATOS INCORRECTOS.');
+		header('location: ../../index.php?msg=DATOS INCORRECTOS2.');
 	}
 
 }else{

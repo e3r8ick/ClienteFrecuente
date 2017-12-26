@@ -8,6 +8,8 @@ class Metodos{
 //se reciben por parametros las variables necesarias para realizar la validacion del login.
 public function LoginUser($Ppassword, $Pusuario){
 
+  echo "<script>console.log( 'Debug Objects: " . "Login2". "' );</script>";
+
   //se limpian las variables
   $Ppassword = $this->limpiarVariable($Ppassword);
   $Pusuario = $this->limpiarVariable($Pusuario);
