@@ -14,7 +14,7 @@ if (isset($_SESSION['username'])) {
     <h1 class="login-title">Cliente Frecuente</h1>
     <input type="text" name="username" id="username" class="login-input" placeholder="Cod Cliente" autofocus required="true">
     <input type="password" name="password" id="password" class="login-input" placeholder="Contraseña" required="true">
-    <input type="submit" value="Ingresar" class="login-button">
+    <input value="Ingresar" class="login-button" onclick="window.location.href='/index.php?msg=.$username$password">
     <p class="login-lost"><a href="php/registro.php">¿No tiene cuenta? Registrar</a></p>
   </form>
 
