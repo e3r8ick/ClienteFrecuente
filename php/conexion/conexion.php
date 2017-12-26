@@ -4,7 +4,6 @@
 
 		//funcion publica para obtener una instancia de la conexion a la BD
 		public function get_Conexion(){
-			echo "<script>console.log( 'Debug Objects: " . "sirve2" . "' );</script>";
 			$host='127.0.0.1';
 			//Esta conexion debe poseer la facilidad de realizar inserts, updates y selects
 

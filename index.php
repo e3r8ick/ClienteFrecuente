@@ -1,12 +1,12 @@
+
 <?php
 //Se inicia la sesion en php
-session_start();
+/*session_start();
 //se valida si ya hay una sesion existente
 if (isset($_SESSION['username'])) {
 	//si existe una sesion, se redirecciona al usuario a la pantalla de inicio.
 	header('location: index.php');
-}
-
+}*/
 ?>
 <LINK REL=StyleSheet HREF="css/login.css" TYPE="text/css">
 
@@ -23,5 +23,9 @@ if (isset($_SESSION['username'])) {
     require_once ('php/conexion/conexion.php');
 		require_once ('php/conexion/metodos.php');
     echo "<script>console.log( 'Debug Objects: " . "sirve1". "' );</script>";
+
+/*
+		$con = new Conexion();
+		$conexion = $con->get_Conexion();*/
 
   ?>

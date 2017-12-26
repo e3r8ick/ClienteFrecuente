@@ -34,9 +34,11 @@ public function LoginUser($Ppassword, $Pusuario){
     $conexion = null;
 
     //se retorna el $result;
+    echo "<script>console.log( 'Debug Objects: " . "result". "' );</script>";
     return $result;
   }else{
     //si el statement da error, se retorna falso.
+    echo "<script>console.log( 'Debug Objects: " . "falso". "' );</script>";
     return false;
   }
 
