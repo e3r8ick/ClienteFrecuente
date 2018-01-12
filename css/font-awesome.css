@@ -811,7 +811,7 @@ ul.icons-ul > li .icon-li {
 .icon-hdd:before {
   content: "\f0a0";
 }
-.icon-bullhorn:before {
+.icon-list-ul:before {
   content: "\f0a1";
 }
 .icon-bell:before {

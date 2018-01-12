@@ -44,7 +44,7 @@ public function LoginUser($Ppassword, $Pusuario){
 
 }
 
-public function RegisterUser($Ppassword, $Pusuario, $PpasswordC){
+public function RegisterUser( $Pusuario, $Ppassword, $PpasswordC){
 
   echo "<script>console.log( 'Debug Objects: " . "register". "' );</script>";
 
@@ -57,10 +57,24 @@ public function RegisterUser($Ppassword, $Pusuario, $PpasswordC){
   $conexion = $con->get_Conexion();
 
   if($Ppassword == $PpasswordC){
+    $sql = "SELECT CONTRASENIA(?, ?) FROM GEN_CLIENTE";
+
+    //se establece el query del sql
+    $stmt = $conexion->prepare($sql);
+
+    //se enlazan los parametros con la sentencia de manera segura
+    // $stmt->bindParam(':cia', $Pcia);
+    // $stmt->bindParam(':usuario', $Pusuario);
+
+    //se realiza un execute y un fetch al primer resultado del select.
+    $stmt->execute(array($Pusuario, $Ppassword));
+    $temp = $stmt->fetch();
+
     //se crea la sentencia SQL
-    $sql = "UPDATE GEN_CLIENTE SET CONTRASENIA=? WHERE COD_CLIENTE=?;";
+    $UPDATE = "UPDATE GEN_CLIENTE SET CONTRASENIA=? WHERE COD_CLIENTE=?;";
     $PrepQuery = $conexion->prepare($UPDATE);
     $PrepQuery->execute(array($Ppassword, $Pusuario));
+    echo "<script>console.log( 'Debug Objects: " .$temp['CONTRASENIA']. "' );</script>";
 
   }else{
     header('location: ../index.php?msg=CONTRASEÑA NO COINCIDE.');
@@ -68,6 +82,18 @@ public function RegisterUser($Ppassword, $Pusuario, $PpasswordC){
   $conexion = null;
   return true;
   }
-}
 
+
+  //funcion que limpia la variable.
+  public function limpiarVariable($var){
+    //se limpia la variable de cualquier slash, backslash o etiqueta.
+    $var = strip_tags($var);
+    $var = stripslashes($var);
+    $var = stripcslashes($var);
+    // $var = "'".$var."'";
+    //se devuelve la variable
+    return $var;
+  }
+
+}
 ?>

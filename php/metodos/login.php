@@ -38,7 +38,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 			//$_SESSION['nombre-usuario'] = $result['DES_USUARIO'];
 
 			//y se redirecciona a la pagina de inicio del usuario.
-			header('location: php/perfil.php');
+			header('location: ../perfil.php');
 
 		}else{
 			//se redirecciona al login con un mensaje de error

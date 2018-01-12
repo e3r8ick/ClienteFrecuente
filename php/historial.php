@@ -107,45 +107,16 @@
       <td align="center">
         <div class="well">
            <ul class="nav nav-tabs">
-             <li class="active"><h1 href="#home" data-toggle="tab" >Perfil</h1></li>
+             <li class="active"><h1 href="#home" data-toggle="tab" >Historial de Transacciones</h1></li>
            </ul>
            <div id="myTabContent" class="tab-content">
              <div class="tab-pane active in" id="home">
                <form id="tab">
-                   <label>Código de Cliente</label>
-                   <input type="text" value="123" class="input-xlarge" readonly>
-                   <br></br>
-                   <label>Nombre</label>
-                   <input type="text" value="ERICK CORDERO" class="input-xlarge" readonly>
-                   <br></br>
-                   <label>Cédula</label>
-                   <input type="text" value="207220864" class="input-xlarge" readonly>
-                   <br></br>
-                   <label>Teléfono</label>
-                   <input type="text" value="24430139" class="input-xlarge" readonly>
-                   <br></br>
-                   <label>Teléfono2</label>
-                   <input type="text" value="87022315" class="input-xlarge" readonly>
-                   <br></br>
-                   <label>FAX</label>
-                   <input type="text" value="" class="input-xlarge" readonly>
-                   <br></br>
-                   <label>Email</label>
-                   <input type="text" value="eguicoro2@gmail.com" class="input-xlarge" readonly>
-                   <br></br>
-                   <label>Dirección de Envio</label>
-                   <textarea value="Smith" rows="3" class="input-xlarge" readonly>Guadalupe, Alajuela
-                   </textarea>
-                   <br></br>
-                   <label>Frecuencia de envio de estado de cuenta</label>
-                   <select name="DropDownTimezone" id="DropDownTimezone" class="input-xlarge">
-                     <option value="Mensual">Mensual</option>
-                     <option value="Semanal">Semanal</option>
-                     <option value="Cada 2 semanas">Cada 2 semanas</option>
-                     <option value="Cada 2 meses">Cada 2 meses</option>
-                   </select>
+                 <input type="date" data-date-inline-picker="true" />
+                 <input type="date" data-date-inline-picker="true" />
+                 <br></br>
                  	<div>
-               	    <button class="btn btn-primary">Actualizar</button>
+               	    <button class="btn btn-primary">Generar historial</button>
                	</div>
                </form>
              </div>
