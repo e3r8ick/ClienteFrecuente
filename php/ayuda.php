@@ -73,32 +73,10 @@
                    <label>Nombre</label>
                    <input type="text" value="ERICK CORDERO" class="input-xlarge" readonly>
                    <br></br>
-                   <label>Cédula</label>
-                   <input type="text" value="207220864" class="input-xlarge" readonly>
-                   <br></br>
-                   <label>Teléfono</label>
-                   <input type="text" value="24430139" class="input-xlarge" readonly>
-                   <br></br>
-                   <label>Teléfono2</label>
-                   <input type="text" value="87022315" class="input-xlarge" readonly>
-                   <br></br>
-                   <label>FAX</label>
-                   <input type="text" value="" class="input-xlarge" readonly>
-                   <br></br>
-                   <label>Email</label>
-                   <input type="text" value="eguicoro2@gmail.com" class="input-xlarge" readonly>
-                   <br></br>
-                   <label>Dirección de Envio</label>
-                   <textarea value="Smith" rows="3" class="input-xlarge" readonly>Guadalupe, Alajuela
+                   <label>Descripción del problema</label>
+                   <textarea value="Smith" rows="3" class="input-xlarge" readonly>
                    </textarea>
                    <br></br>
-                   <label>Frecuencia de envio de estado de cuenta</label>
-                   <select name="DropDownTimezone" id="DropDownTimezone" class="input-xlarge">
-                     <option value="Mensual">Mensual</option>
-                     <option value="Semanal">Semanal</option>
-                     <option value="Cada 2 semanas">Cada 2 semanas</option>
-                     <option value="Cada 2 meses">Cada 2 meses</option>
-                   </select>
                  	<div>
                	    <button class="btn btn-primary">Actualizar</button>
                	</div>

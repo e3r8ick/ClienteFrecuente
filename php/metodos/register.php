@@ -4,7 +4,7 @@
 session_start();
 
 //Print de prueba
-echo "<script>console.log( 'Debug Objects: " . "entro". "' );</script>";
+echo "<script>console.log( 'Debug Objects: " . "entroR". "' );</script>";
 
 if (isset($_SESSION['username'])) {//se valida si ya esta una sesion activa.
 	header('location: ../../index.php');
@@ -38,7 +38,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 			//$_SESSION['nombre-usuario'] = $result['DES_USUARIO'];
 
 			//y se redirecciona a la pagina de inicio del usuario.
-			header('location: php/perfil.php');
+			header('location: ../../index.php');
 
 		}else{
 			//se redirecciona al login con un mensaje de error

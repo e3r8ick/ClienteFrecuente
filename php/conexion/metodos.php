@@ -44,154 +44,30 @@ public function LoginUser($Ppassword, $Pusuario){
 
 }
 
-// *************************** /LOGIN USER *****************************************//
+public function RegisterUser($Ppassword, $Pusuario, $PpasswordC){
 
-// *************************** COD_AGENTE ********************************************//
-
-//funcion que se encarga de obtener el codigo del agente.
-public function get_CodAgente($Pcia, $Pusuario, $Psucursal){
+  echo "<script>console.log( 'Debug Objects: " . "register". "' );</script>";
 
   //se limpian las variables
+  $Ppassword = $this->limpiarVariable($Ppassword);
+  $PpasswordC = $this->limpiarVariable($PpasswordC);
   $Pusuario = $this->limpiarVariable($Pusuario);
-  $Pcia = $this->limpiarVariable($Pcia);
-  $Psucursal = $this->limpiarVariable($Psucursal);
-
   //se instancia la clase conexion y se le otorga el string de conexion a una nueva variable
   $con = new Conexion();
   $conexion = $con->get_Conexion();
 
-  //se establece
-  $sql = "SELECT CODIGOAGENTE( ?, ?, ?) as VALOR FROM DUAL";
-
-  //se establece el query del sql
-  $stmt = $conexion->prepare($sql);
-
-  //se enlazan los parametros con la sentencia de manera segura
-  // $stmt->bindParam(':cia', $Pcia);
-  // $stmt->bindParam(':usuario', $Pusuario);
-
-  //se realiza un execute y un fetch al primer resultado del select.
-  $stmt->execute(array($Pcia, $Pusuario, $Psucursal));
-  $agente = $stmt->fetch();
-
-  if ($agente['VALOR'] == null) {
-    //se establece el select de la nueva consulta.
-    $sql = "SELECT NEWCODIGOAGENTE( ?, ?, ?) as VALOR FROM DUAL";
-
-    //se establece el query del sql
-    $stmt = $conexion->prepare($sql);
-
-    //se enlazan los parametros con la sentencia de manera segura
-    // $stmt->bindParam(':cia', $Pcia);
-    // $stmt->bindParam(':usuario', $Pusuario);
-
-    //se realiza un execute y un fetch al primer resultado del select.
-    $stmt->execute(array($Pcia, $Pusuario, $Psucursal));
-    $agente = $stmt->fetch();
-
-    //se realiza el update a la BD donde el codigo de usuario se reestablece.
-    $UPDATE = "UPDATE SEG_USUARIO SET COD_AGENTE = ? WHERE COD_CIA = ? AND COD_USUARIO = ? AND COD_SUCURSAL = ?";
+  if($Ppassword == $PpasswordC){
+    //se crea la sentencia SQL
+    $sql = "UPDATE GEN_CLIENTE SET CONTRASENIA=? WHERE COD_CLIENTE=?;";
     $PrepQuery = $conexion->prepare($UPDATE);
-    $PrepQuery->execute(array($agente['VALOR'], $Pcia, $Pusuario, $Psucursal));
+    $PrepQuery->execute(array($Ppassword, $Pusuario));
 
-    // $commit = "COMMIT";
-    // $prepCommit = $conexion->query($commit);
-    // $prepCommit->execute();
-
+  }else{
+    header('location: ../index.php?msg=CONTRASEÑA NO COINCIDE.');
   }
-
-  //se cierra la conexion.
   $conexion = null;
-
-  //se retorna el valor de agente.
-  return $agente;
-}
-
-// *************************** /COD_AGENTE ******************************************//
-
-// *************************** COD_CIA ********************************************//
-
-//funcion que obtiene la lista de codigos CIA
-public function get_ListaCodCia(){
-  $rows = null;
-  //se instancia la conexion
-  $con = new Conexion();
-  $conexion = $con->get_Conexion();
-
-  //se seleccionan los codigos cia de la tabla
-  $sql = "SELECT COD_CIA, DES_CIA FROM GEN_COMPANIA ORDER BY COD_CIA";
-  $stmt = $conexion->query($sql);
-  //se realiza el fetch para obtener los datos.
-  $stmt->execute();
-  while ($result = $stmt->fetch()) {
-    $rows[] = $result;
+  return true;
   }
-
-  //se realiza un foreach que inserta todos los datos en un arreglo de resultado.
-
-  //se cierra la conexion.
-  $conexion = null;
-
-  //se retorna el arreglo con la informacion cargada.
-  return $rows;
 }
-
-// *************************** /COD_CIA ********************************************//
-
-
-// *************************** SUCURSALES ******************************************//
-
-//funcion que retorna las sucursales.
-public function getSucursal($cia){
-//se limpia la variable de la sucursal.
-$cia = $this->limpiarVariable($cia);
-//se inicializa la variable que va a ser devuelta
-$rows = null;
-
-//se instancia la conexion en una variable de conexion y se obtiene el string de
-//conexion.
-$con = new Conexion();
-$conexion = $con->get_Conexion();
-
-//se establece la consulta
-$sql = "SELECT SUCURSAL, DESCRIPCION FROM GEN_SUCURSAL WHERE COD_CIA = ? ORDER BY COD_CIA";
-$stmt = $conexion->prepare($sql);
-//se concatena la variable para realizar la consulta
-
-//se establece un while que carga cada fila en un campo del arreglo
-$stmt->execute(array($cia));
-while ($result = $stmt->fetch()) {
-  $rows[] = $result;
-}
-
-//se cierra la conexion.
-$conexion = null;
-
-//se retornan las filas en el arreglo.
-return $rows;
-
-}
-
-// *************************** /SUCURSALES *****************************************//
-
-
-// *************************** LIMPIAR VAR *****************************************//
-
-//funcion que limpia la variable.
-public function limpiarVariable($var){
-  //se limpia la variable de cualquier slash, backslash o etiqueta.
-  $var = strip_tags($var);
-  $var = stripslashes($var);
-  $var = stripcslashes($var);
-  // $var = "'".$var."'";
-  //se devuelve la variable
-  return $var;
-}
-
-// *************************** /LIMPIAR VAR *****************************************//
-
-}
-
-// *************************** /CLASS METODOS ***************************************//
 
 ?>
