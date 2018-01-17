@@ -48,34 +48,25 @@ public function RegisterUser( $Pusuario, $Ppassword, $PpasswordC){
 
   echo "<script>console.log( 'Debug Objects: " . "register". "' );</script>";
 
-  //se limpian las variables
-  $Ppassword = $this->limpiarVariable($Ppassword);
-  $PpasswordC = $this->limpiarVariable($PpasswordC);
-  $Pusuario = $this->limpiarVariable($Pusuario);
   //se instancia la clase conexion y se le otorga el string de conexion a una nueva variable
   $con = new Conexion();
   $conexion = $con->get_Conexion();
 
   if($Ppassword == $PpasswordC){
-    $sql = "SELECT CONTRASENIA(?, ?) FROM GEN_CLIENTE";
-
-    //se establece el query del sql
-    $stmt = $conexion->prepare($sql);
-
-    //se enlazan los parametros con la sentencia de manera segura
-    // $stmt->bindParam(':cia', $Pcia);
-    // $stmt->bindParam(':usuario', $Pusuario);
-
-    //se realiza un execute y un fetch al primer resultado del select.
-    $stmt->execute(array($Pusuario, $Ppassword));
-    $temp = $stmt->fetch();
-
-    //se crea la sentencia SQL
-    $UPDATE = "UPDATE GEN_CLIENTE SET CONTRASENIA=? WHERE COD_CLIENTE=?;";
-    $PrepQuery = $conexion->prepare($UPDATE);
-    $PrepQuery->execute(array($Ppassword, $Pusuario));
-    echo "<script>console.log( 'Debug Objects: " .$temp['CONTRASENIA']. "' );</script>";
-
+    try{
+      //setear los errores
+      $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      //se crea la sentencia SQL
+      $sql = "UPDATE GEN_CLIENTE SET CONTRASENIA='".$Ppassword."' WHERE COD_CLIENTE='".$Pusuario."';";
+      //prepara el statement
+      $stmt = $conexion->prepare($sql);
+      // ejecuta el query
+      $stmt->execute();
+      echo "<script>console.log( 'Debug Objects: " . "Update". "' );</script>";
+    }
+    catch(PDOException $e){
+        echo "<script>console.log( 'Debug Objects: " .$e->getMessage(). "' );</script>";
+    }
   }else{
     header('location: ../index.php?msg=CONTRASEÑA NO COINCIDE.');
   }

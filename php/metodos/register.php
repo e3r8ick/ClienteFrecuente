@@ -27,6 +27,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['pass
 	echo "<script>console.log( 'Debug Objects: " .$hash. "' );</script>";
 
 	if(password_verify ( $passC , $hash )){
+		echo "<script>console.log( 'Debug Objects: " ."iguales". "' );</script>";
 		//se instancia la clase de metodos.
 		$metodos = new Metodos();
 		//se obtienen el usuario que coincide en el usuario, clave y cia.
