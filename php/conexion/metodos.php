@@ -55,14 +55,16 @@ public function RegisterUser( $Pusuario, $Ppassword, $PpasswordC){
   if($Ppassword == $PpasswordC){
     try{
       //setear los errores
-      $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      //$conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       //se crea la sentencia SQL
-      $sql = "UPDATE GEN_CLIENTE SET CONTRASENIA='".$Ppassword."' WHERE COD_CLIENTE='".$Pusuario."';";
+      //$sql = "UPDATE GEN_CLIENTE SET CONTRASENIA='".$Ppassword."' WHERE COD_CLIENTE='".$Pusuario."';";
+      $sql = "UPDATE GEM_CLIENTE SET CONTRASENIA='1324' WHERE COD_CLIENTE='1234';";
       //prepara el statement
       $stmt = $conexion->prepare($sql);
       // ejecuta el query
       $stmt->execute();
-      echo "<script>console.log( 'Debug Objects: " . "Update". "' );</script>";
+      //echo "<script>console.log( 'Debug Objects: " .$sql. "' );</script>";
+      echo "<script>console.log( 'Debug Objects: " .$stmt->rowCount(). "' );</script>";
     }
     catch(PDOException $e){
         echo "<script>console.log( 'Debug Objects: " .$e->getMessage(). "' );</script>";
