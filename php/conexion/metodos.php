@@ -58,11 +58,11 @@ public function RegisterUser( $Pusuario, $Ppassword, $PpasswordC){
       //$conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       //se crea la sentencia SQL
       //$sql = "UPDATE GEN_CLIENTE SET CONTRASENIA='".$Ppassword."' WHERE COD_CLIENTE='".$Pusuario."';";
-      $sql = "UPDATE GEM_CLIENTE SET CONTRASENIA='1324' WHERE COD_CLIENTE='1234';";
+      $sql = "UPDATE GEN_CLIENTE SET CONTRASENIA = ? WHERE COD_CLIENTE = ?";
       //prepara el statement
       $stmt = $conexion->prepare($sql);
       // ejecuta el query
-      $stmt->execute();
+      $stmt->execute(array($Ppassword, $Pusuario));
       //echo "<script>console.log( 'Debug Objects: " .$sql. "' );</script>";
       echo "<script>console.log( 'Debug Objects: " .$stmt->rowCount(). "' );</script>";
     }
@@ -87,6 +87,5 @@ public function RegisterUser( $Pusuario, $Ppassword, $PpasswordC){
     //se devuelve la variable
     return $var;
   }
-
 }
 ?>
