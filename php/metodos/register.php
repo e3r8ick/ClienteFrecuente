@@ -32,6 +32,15 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['pass
 		$metodos = new Metodos();
 		//se obtienen el usuario que coincide en el usuario, clave y cia.
 		$result = $metodos->RegisterUser($user,$pass,$passC);
+		$result = $metodos->LoginUser($hash,$user);
+
+
+		//se establecen las variables de sesion iniciales.
+		$_SESSION['username'] = $result['COD_CLIENTE'];
+		//$_SESSION['nombre-usuario'] = $result['DES_USUARIO'];
+
+		//y se redirecciona a la pagina de inicio del usuario.
+		header('location: ../perfil.php');
 
 		//se valida que el resultado traiga datos, en caso de que no traiga nada
 		//el usuario no existe o las credenciales no coinciden.

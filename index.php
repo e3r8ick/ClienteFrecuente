@@ -3,10 +3,10 @@
 //Se inicia la sesion en php
 session_start();
 //se valida si ya hay una sesion existente
-/*if (isset($_SESSION['username'])) {
+if (isset($_SESSION['username'])) {
 	//si existe una sesion, se redirecciona al usuario a la pantalla de inicio.
 	header('location: php/perfil.php');
-}*/
+}
 ?>
 <LINK REL=StyleSheet HREF="css/login.css" TYPE="text/css">
 
@@ -22,6 +22,6 @@ session_start();
       echo "<script>console.log( 'Debug Objects: " . "sirve1". "' );</script>";
     ?>
 
-    <input value="Ingresar" class="login-button"  type="submit" onclick="javascript:location.href='php/perfil.php'">
+    <input value="Ingresar" class="login-button"  type="submit">
     <p class="login-lost"><a href="php/registro.php">¿No tiene cuenta? Registrar</a></p>
   </form>

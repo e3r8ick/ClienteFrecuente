@@ -52,26 +52,23 @@ public function RegisterUser( $Pusuario, $Ppassword, $PpasswordC){
   $con = new Conexion();
   $conexion = $con->get_Conexion();
 
-  if($Ppassword == $PpasswordC){
-    try{
-      //setear los errores
-      //$conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      //se crea la sentencia SQL
-      //$sql = "UPDATE GEN_CLIENTE SET CONTRASENIA='".$Ppassword."' WHERE COD_CLIENTE='".$Pusuario."';";
-      $sql = "UPDATE GEN_CLIENTE SET CONTRASENIA = ? WHERE COD_CLIENTE = ?";
-      //prepara el statement
-      $stmt = $conexion->prepare($sql);
-      // ejecuta el query
-      $stmt->execute(array($Ppassword, $Pusuario));
-      //echo "<script>console.log( 'Debug Objects: " .$sql. "' );</script>";
-      echo "<script>console.log( 'Debug Objects: " .$stmt->rowCount(). "' );</script>";
-    }
-    catch(PDOException $e){
-        echo "<script>console.log( 'Debug Objects: " .$e->getMessage(). "' );</script>";
-    }
-  }else{
-    header('location: ../index.php?msg=CONTRASEÑA NO COINCIDE.');
+  try{
+    //setear los errores
+    //$conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    //se crea la sentencia SQL
+    //$sql = "UPDATE GEN_CLIENTE SET CONTRASENIA='".$Ppassword."' WHERE COD_CLIENTE='".$Pusuario."';";
+    $sql = "UPDATE GEN_CLIENTE SET CONTRASENIA = ? WHERE COD_CLIENTE = ?";
+    //prepara el statement
+    $stmt = $conexion->prepare($sql);
+    // ejecuta el query
+    $stmt->execute(array($Ppassword, $Pusuario));
+    //echo "<script>console.log( 'Debug Objects: " .$sql. "' );</script>";
+    echo "<script>console.log( 'Debug Objects: " .$stmt->rowCount(). "' );</script>";
   }
+  catch(PDOException $e){
+      echo "<script>console.log( 'Debug Objects: " .$e->getMessage(). "' );</script>";
+  }
+
   $conexion = null;
   return true;
   }

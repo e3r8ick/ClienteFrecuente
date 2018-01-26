@@ -49,58 +49,49 @@
    <li><a href="../index.php"><i class="icon-home"></i>INICIO</a>
    </li>
   <li><a  href="perfil.php"><i class="icon-user"></i>PEFIL</a></li>
-  </li>
   <li><a  href="historial.php"><i class="icon-list-ul"></i>HISTORIAL DE TRANSACCIONES</a></li>
   <li><a  href="ayuda.php"><i class="icon-envelope-alt"></i>AYUDA</a></li>
-  <li><a  href="../index.php"><i class="icon-off" onclick="DoLogout();"></i>CERRAR SESIÓN</a></li>
-  <script>
-    //funcion que muestra una confirm box para
-    //verificar si se desea cerrar sesion.
-    function DoLogout(){
-      //var salir = confirm('¿Desea cerrar sesion?');
-      var salir =
-        swal({
-          //se pide confirmacion para cerrar la sesion.
-            title: 'Desea cerrar sesion?',
-            //text: "Desea cerrar sesion?",
-          type: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-        }).then(function () {
-          //Si la confirmacion devuelve falso o null, no se realiza el logout
-          if (salir) {
-            //en caso de ser true, se realiza el window.location.replace(), donde por medio de PHP
-            // se destruye la sesion y se redirecciona a la pagina de login.
-            window.location.replace("../metodos/logout.php");
-          }
-        });
-    }
-
-    //funcion que devuelve al index, para evitar tener que agregar un anchor
-    function index(){
-      window.location.replace("index.php");
-    }
-
-    //Esta funcion se encarga de agregar dinamicamente los indicadores de que
-    //hay elementos de submenu en el menu.
-    function addIndicator(){
-      //se obtienen los elementos que tengan submenu
-      var subs = document.getElementsByClassName('nav-menu__submenu');
-      //se recorren todos
-      for (var i = 0 ; i < subs.length; i++) {
-        //se obtiene el padre
-        var padre = subs[i].parentNode;
-        //se ingresa en el anchor y se concatena el indicador.
-        var anchor = padre.getElementsByClassName('nav-menu__anchor');
-        anchor[0].innerHTML = "| " + anchor[0].innerHTML + ' |';
-      }
-    }
-  </script>
+  <li><a  href="#" onclick="DoLogout()"><i class="icon-off"></i>CERRAR SESIÓN</a></li>
   </ul>
   </nav>
  </div><!--end mainWrap-->
+ <script>
+   //funcion que muestra una confirm box para
+   //verificar si se desea cerrar sesion.
+   function DoLogout(){
+     console.log("cerrar sesión");
+     //Ingresamos un mensaje a mostrar
+      var mensaje = confirm("¿Desea cerrar sesión?");
+      //Detectamos si el usuario acepto el mensaje
+      if (mensaje) {
+      window.location.replace("metodos/logout.php");
+      }
+      //Detectamos si el usuario denegó el mensaje
+      else {
+      window.location.replace("perfil.php");
+   }
+ }
 
+   //funcion que devuelve al index, para evitar tener que agregar un anchor
+   function index(){
+     window.location.replace("index.php");
+   }
+
+   //Esta funcion se encarga de agregar dinamicamente los indicadores de que
+   //hay elementos de submenu en el menu.
+   function addIndicator(){
+     //se obtienen los elementos que tengan submenu
+     var subs = document.getElementsByClassName('nav-menu__submenu');
+     //se recorren todos
+     for (var i = 0 ; i < subs.length; i++) {
+       //se obtiene el padre
+       var padre = subs[i].parentNode;
+       //se ingresa en el anchor y se concatena el indicador.
+       var anchor = padre.getElementsByClassName('nav-menu__anchor');
+       anchor[0].innerHTML = "| " + anchor[0].innerHTML + ' |';
+     }
+   }
+ </script>
 
  <table>
     <tr>
