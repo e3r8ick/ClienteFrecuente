@@ -38,7 +38,7 @@
 
 </head>
 
- <body>
+ <body onLoad="getDatos()">
 
  <div class="mainWrap">
 
@@ -72,28 +72,9 @@
    }
  }
 
-   //funcion que devuelve al index, para evitar tener que agregar un anchor
-   function index(){
-     window.location.replace("index.php");
-   }
-
-   //Esta funcion se encarga de agregar dinamicamente los indicadores de que
-   //hay elementos de submenu en el menu.
-   function addIndicator(){
-     //se obtienen los elementos que tengan submenu
-     var subs = document.getElementsByClassName('nav-menu__submenu');
-     //se recorren todos
-     for (var i = 0 ; i < subs.length; i++) {
-       //se obtiene el padre
-       var padre = subs[i].parentNode;
-       //se ingresa en el anchor y se concatena el indicador.
-       var anchor = padre.getElementsByClassName('nav-menu__anchor');
-       anchor[0].innerHTML = "| " + anchor[0].innerHTML + ' |';
-     }
-   }
  </script>
 
- <table>
+ <table class="table">
     <tr>
       <td align="center">
         <div class="well">
@@ -105,28 +86,36 @@
                <form id="tab">
                    <label>Código de Cliente</label>
                    <input type="text" value="123" class="input-xlarge" readonly>
+                   <td><em id="person_cod"></em></td>
                    <br></br>
                    <label>Nombre</label>
                    <input type="text" value="ERICK CORDERO" class="input-xlarge" readonly>
+                   <td><em id="person_name"></em></td>
                    <br></br>
                    <label>Cédula</label>
                    <input type="text" value="207220864" class="input-xlarge" readonly>
+                   <td><em id="person_ced"></em></td>
                    <br></br>
                    <label>Teléfono</label>
                    <input type="text" value="24430139" class="input-xlarge" readonly>
+                   <td><em id="person_num1"></em></td>
                    <br></br>
                    <label>Teléfono2</label>
                    <input type="text" value="87022315" class="input-xlarge" readonly>
+                   <td><em id="person_num2"></em></td>
                    <br></br>
                    <label>FAX</label>
                    <input type="text" value="" class="input-xlarge" readonly>
+                   <td><em id="person_fax"></em></td>
                    <br></br>
                    <label>Email</label>
                    <input type="text" value="eguicoro2@gmail.com" class="input-xlarge" readonly>
+                   <td><em id="person_email"></em></td>
                    <br></br>
                    <label>Dirección de Envio</label>
                    <textarea value="Smith" rows="3" class="input-xlarge" readonly>Guadalupe, Alajuela
                    </textarea>
+                   <td><em id="person_dir"></em></td>
                    <br></br>
                    <label>Frecuencia de envio de estado de cuenta</label>
                    <select name="DropDownTimezone" id="DropDownTimezone" class="input-xlarge">

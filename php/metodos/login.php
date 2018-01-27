@@ -37,6 +37,9 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 			$_SESSION['username'] = $result['COD_CLIENTE'];
 			//$_SESSION['nombre-usuario'] = $result['DES_USUARIO'];
 
+			//seteamos el cookie del codigod e Cliente
+			setcookie("COD_CLIENTE", $_SESSION['username']);
+
 			//y se redirecciona a la pagina de inicio del usuario.
 			header('location: ../perfil.php');
 

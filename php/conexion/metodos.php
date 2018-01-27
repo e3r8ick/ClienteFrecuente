@@ -18,7 +18,7 @@ public function LoginUser($Ppassword, $Pusuario){
   $conexion = $con->get_Conexion();
 
   //se crea la sentencia SQL
-  $sql = "SELECT COD_CLIENTE, NOM_CLIENTE, CEDULA, NUM_TELEFONO1, NUM_TELEFONO2, NUM_FAX, EMAIL, DIRECCION_ENVIO, CONTRASENIA FROM GEN_CLIENTE WHERE COD_CLIENTE = ? AND CONTRASENIA = ?";
+  $sql = "SELECT COD_CLIENTE, CONTRASENIA FROM GEN_CLIENTE WHERE COD_CLIENTE = ? AND CONTRASENIA = ?";
 
   //se prepara el statement con la sentencia previamente creada
   $stmt = $conexion->prepare($sql);
@@ -71,6 +71,36 @@ public function RegisterUser( $Pusuario, $Ppassword, $PpasswordC){
 
   $conexion = null;
   return true;
+  }
+
+public function getDatos($Pusuario){
+  $con = new Conexion();
+  $conexion = $con->get_Conexion();
+
+  //se crea la sentencia SQL
+  $sql = "SELECT NOM_CLIENTE, CEDULA, NUM_TELEFONO1, NUM_TELEFONO2, NUM_FAX, EMAIL, DIRECCION_ENVIO, FREC_ESTADO FROM GEN_CLIENTE WHERE COD_CLIENTE = ?";
+
+  //se prepara el statement con la sentencia previamente creada
+  $stmt = $conexion->prepare($sql);
+
+  if ($stmt) {
+    //se realiza un execute y un fetch donde se obtienen los datos de la primera fila
+    //que coincida con el usuario y la clave ademas del cia.
+    //en el execute se agregan las variables por medio de un array.
+    $stmt->execute(array($Pusuario);
+    $result = $stmt->fetch();
+
+    //se cierra la conexion
+    $conexion = null;
+
+    //se retorna el $result;
+    echo "<script>console.log( 'Debug Objects: " . "result". "' );</script>";
+    return $result;
+  }else{
+    //si el statement da error, se retorna falso.
+    echo "<script>console.log( 'Debug Objects: " . "falso". "' );</script>";
+    return false;
+    }
   }
 
 
