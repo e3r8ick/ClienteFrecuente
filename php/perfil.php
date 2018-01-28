@@ -83,10 +83,10 @@
            </ul>
            <div id="myTabContent" class="tab-content">
              <div class="tab-pane active in" id="home">
-               <form id="tab">
+               <form id="tab" action="conexion/metodos.php" method="get">
                    <label>Código de Cliente</label>
                    <input type="text" value="123" class="input-xlarge" readonly>
-                   <td><em id="person_cod"></em></td>
+                   <td><em id="NOM_CLIENTE"></em></td>
                    <br></br>
                    <label>Nombre</label>
                    <input type="text" value="ERICK CORDERO" class="input-xlarge" readonly>
@@ -136,6 +136,22 @@
  </table>
 
 </body>
+
+<!--script>
+$(document).ready(function () {
+  $("#success-alert").hide();
+  $.ajax({
+    type: "GET",
+    url: "webservices/profile.php",
+    success: function(data){
+    var obj = $.parseJSON(data);
+    $('#person_name').html(obj.name + " " + '<button type="button" class="btn btn-default btn-xs" aria-label="Edit" data-toggle="modal" data-target="#modal_nombre"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar</button>');
+    $('#person_email').html(obj.email);
+    $('#person_nick').html(obj.nick);
+    }
+  });
+});
+</script-1>
 
 <?php
   echo '<input type="hidden" id="username" value="'.$_SESSION['username'].'">';

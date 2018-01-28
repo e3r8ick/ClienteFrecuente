@@ -87,7 +87,7 @@ public function getDatos($Pusuario){
     //se realiza un execute y un fetch donde se obtienen los datos de la primera fila
     //que coincida con el usuario y la clave ademas del cia.
     //en el execute se agregan las variables por medio de un array.
-    $stmt->execute(array($Pusuario);
+    $stmt->execute(array($Pusuario));
     $result = $stmt->fetch();
 
     //se cierra la conexion
@@ -95,6 +95,8 @@ public function getDatos($Pusuario){
 
     //se retorna el $result;
     echo "<script>console.log( 'Debug Objects: " . "result". "' );</script>";
+    $resultJson = json_encode($result);
+    echo $resultJson;
     return $result;
   }else{
     //si el statement da error, se retorna falso.
