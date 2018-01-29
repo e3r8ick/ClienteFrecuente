@@ -89,28 +89,28 @@
                    <br></br>
                    <label>Cédula</label>
                    <input type="text" value="207220864" class="input-xlarge" readonly>
-                   <td><em id="person_ced"></em></td>
+                   <td><em id="CEDULA"></em></td>
                    <br></br>
                    <label>Teléfono</label>
                    <input type="text" value="24430139" class="input-xlarge" readonly>
-                   <td><em id="person_num1"></em></td>
+                   <td><em id="NUM_TELEFONO1"></em></td>
                    <br></br>
                    <label>Teléfono2</label>
                    <input type="text" value="87022315" class="input-xlarge" readonly>
-                   <td><em id="person_num2"></em></td>
+                   <td><em id="NUM_TELEFONO2"></em></td>
                    <br></br>
                    <label>FAX</label>
                    <input type="text" value="" class="input-xlarge" readonly>
-                   <td><em id="person_fax"></em></td>
+                   <td><em id="NUM_FAX"></em></td>
                    <br></br>
                    <label>Email</label>
                    <input type="text" value="eguicoro2@gmail.com" class="input-xlarge" readonly>
-                   <td><em id="person_email"></em></td>
+                   <td><em id="EMAIL"></em></td>
                    <br></br>
                    <label>Dirección de Envio</label>
                    <textarea value="Smith" rows="3" class="input-xlarge" readonly>Guadalupe, Alajuela
                    </textarea>
-                   <td><em id="person_dir"></em></td>
+                   <td><em id="DIRECCION_ENVIO"></em></td>
                    <br></br>
                    <label>Frecuencia de envio de estado de cuenta</label>
                    <select name="DropDownTimezone" id="DropDownTimezone" class="input-xlarge">
