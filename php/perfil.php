@@ -27,12 +27,6 @@
 	<link rel="stylesheet" href="../css/perfil.css" type="text/css" media="screen">
     <link rel="stylesheet" href="../css/font-awesome.css" >
 
-     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-      <script src="http://css3-mediaqueries-js.googlecode.com/files/css3-mediaqueries.js"></script>
-    <![endif]-->
-
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript" ></script>
     <script src="../js/perfil.js" type="text/javascript"></script>
 
@@ -65,6 +59,7 @@
       //Detectamos si el usuario acepto el mensaje
       if (mensaje) {
       window.location.replace("metodos/logout.php");
+      setcookie("COD_CLIENTE", "", time() - 3600);
       }
       //Detectamos si el usuario denegó el mensaje
       else {
@@ -83,7 +78,7 @@
            </ul>
            <div id="myTabContent" class="tab-content">
              <div class="tab-pane active in" id="home">
-               <form id="tab" action="conexion/metodos.php" method="get">
+               <form id="tab" action="conexion/metodos.php?gdata" method="post">
                    <label>Código de Cliente</label>
                    <input type="text" value="123" class="input-xlarge" readonly>
                    <td><em id="NOM_CLIENTE"></em></td>
@@ -127,6 +122,14 @@
                  	<div>
                	    <button class="btn btn-primary">Actualizar</button>
                	</div>
+
+                <?php
+                  //se incluyen los archivos necesarios.
+                  require_once ('php/conexion/conexion.php');
+                  require_once ('php/conexion/metodos.php');
+                  echo "<script>console.log( 'Debug Objects: " . "sirve1". "' );</script>";
+                ?>
+
                </form>
              </div>
            </div>
@@ -137,7 +140,7 @@
 
 </body>
 
-<!--script>
+<script>
 $(document).ready(function () {
   $("#success-alert").hide();
   $.ajax({
@@ -151,7 +154,7 @@ $(document).ready(function () {
     }
   });
 });
-</script-1>
+</script>
 
 <?php
   echo '<input type="hidden" id="username" value="'.$_SESSION['username'].'">';

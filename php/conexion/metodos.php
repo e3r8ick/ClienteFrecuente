@@ -73,9 +73,11 @@ public function RegisterUser( $Pusuario, $Ppassword, $PpasswordC){
   return true;
   }
 
-public function getDatos($Pusuario){
+public function getDatos(){
   $con = new Conexion();
   $conexion = $con->get_Conexion();
+
+  $Pusuario = $_COOKIE["COD_CLIENTE"];
 
   //se crea la sentencia SQL
   $sql = "SELECT NOM_CLIENTE, CEDULA, NUM_TELEFONO1, NUM_TELEFONO2, NUM_FAX, EMAIL, DIRECCION_ENVIO, FREC_ESTADO FROM GEN_CLIENTE WHERE COD_CLIENTE = ?";
@@ -115,6 +117,12 @@ public function getDatos($Pusuario){
     // $var = "'".$var."'";
     //se devuelve la variable
     return $var;
+  }
+
+  //validadores de requests
+  if (isset ( $_REQUEST ["gdata"] )) {
+    $metodos = new Metodos ();
+    $metodos->getDatos ( );
   }
 }
 ?>
