@@ -63,6 +63,8 @@ public function RegisterUser( $Pusuario, $Ppassword, $PpasswordC){
     // ejecuta el query
     $stmt->execute(array($Ppassword, $Pusuario));
     //echo "<script>console.log( 'Debug Objects: " .$sql. "' );</script>";
+    //se setea el cookie con el codigo de usuario
+    setcookie("COD_CLIENTE", $Pusuario);
     echo "<script>console.log( 'Debug Objects: " .$stmt->rowCount(). "' );</script>";
   }
   catch(PDOException $e){
@@ -73,41 +75,6 @@ public function RegisterUser( $Pusuario, $Ppassword, $PpasswordC){
   return true;
   }
 
-public function getDatos(){
-  $con = new Conexion();
-  $conexion = $con->get_Conexion();
-
-  $Pusuario = $_COOKIE["COD_CLIENTE"];
-
-  //se crea la sentencia SQL
-  $sql = "SELECT NOM_CLIENTE, CEDULA, NUM_TELEFONO1, NUM_TELEFONO2, NUM_FAX, EMAIL, DIRECCION_ENVIO, FREC_ESTADO FROM GEN_CLIENTE WHERE COD_CLIENTE = ?";
-
-  //se prepara el statement con la sentencia previamente creada
-  $stmt = $conexion->prepare($sql);
-
-  if ($stmt) {
-    //se realiza un execute y un fetch donde se obtienen los datos de la primera fila
-    //que coincida con el usuario y la clave ademas del cia.
-    //en el execute se agregan las variables por medio de un array.
-    $stmt->execute(array($Pusuario));
-    $result = $stmt->fetch();
-
-    //se cierra la conexion
-    $conexion = null;
-
-    //se retorna el $result;
-    echo "<script>console.log( 'Debug Objects: " . "result". "' );</script>";
-    $resultJson = json_encode($result);
-    echo $resultJson;
-    return $result;
-  }else{
-    //si el statement da error, se retorna falso.
-    echo "<script>console.log( 'Debug Objects: " . "falso". "' );</script>";
-    return false;
-    }
-  }
-
-
   //funcion que limpia la variable.
   public function limpiarVariable($var){
     //se limpia la variable de cualquier slash, backslash o etiqueta.
@@ -117,12 +84,6 @@ public function getDatos(){
     // $var = "'".$var."'";
     //se devuelve la variable
     return $var;
-  }
-
-  //validadores de requests
-  if (isset ( $_REQUEST ["gdata"] )) {
-    $metodos = new Metodos ();
-    $metodos->getDatos ( );
   }
 }
 ?>

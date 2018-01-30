@@ -62,13 +62,13 @@
        var mensaje = confirm("¿Desea cerrar sesión?");
        //Detectamos si el usuario acepto el mensaje
        if (mensaje) {
-       window.location.replace("metodos/logout.php");
+         document.cookie = COD_CLIENTE + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+         window.location.replace("metodos/logout.php");
        }
        //Detectamos si el usuario denegó el mensaje
        else {
-       window.location.replace("perfil.php");
+         window.location.replace("perfil.php");
     }
-  }
   }
   </script>
   </ul>
@@ -76,22 +76,24 @@
  </div><!--end mainWrap-->
 
 
- <table>
+ <table style="margin: 0 auto;">
     <tr>
       <td align="center">
         <div class="well">
            <ul class="nav nav-tabs">
+            <br></br>
              <li class="active"><h1 href="#home" data-toggle="tab" >Ayuda</h1></li>
+              <br></br>
            </ul>
            <div id="myTabContent" class="tab-content">
              <div class="tab-pane active in" id="home">
                <form id="tab">
                    <label>Código de Cliente</label>
                    <input type="text" value="123" class="input-xlarge" readonly>
-                   <br></br>
+                    <br></br>
                    <label>Nombre</label>
                    <input type="text" value="ERICK CORDERO" class="input-xlarge" readonly>
-                   <br></br>
+                    <br></br>
                    <label>Descripción del problema</label>
                    <textarea value="Smith" rows="3" class="input-xlarge">
                    </textarea>

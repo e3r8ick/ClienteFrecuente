@@ -32,7 +32,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['pass
 		$metodos = new Metodos();
 		//se obtienen el usuario que coincide en el usuario, clave y cia.
 		$result = $metodos->RegisterUser($user,$pass,$passC);
-		$result = $metodos->LoginUser($hash,$user);
+		$result = $metodos->LoginUser($pass,$user);
 
 
 		//se establecen las variables de sesion iniciales.

@@ -32,7 +32,7 @@
 
 </head>
 
- <body onLoad="getDatos()">
+ <body>
 
  <div class="mainWrap">
 
@@ -58,85 +58,91 @@
       var mensaje = confirm("¿Desea cerrar sesión?");
       //Detectamos si el usuario acepto el mensaje
       if (mensaje) {
-      window.location.replace("metodos/logout.php");
-      setcookie("COD_CLIENTE", "", time() - 3600);
+        document.cookie = COD_CLIENTE + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        window.location.replace("metodos/logout.php");
       }
       //Detectamos si el usuario denegó el mensaje
       else {
-      window.location.replace("perfil.php");
+        window.location.replace("perfil.php");
    }
  }
 
  </script>
+ <div class="container" style="text-align:center;">
+   <div class="jumbotron" style="text-align:center;">
+     <br>
+         <h2 id="perfil">PERFIL</h2>
+   <table class="table" style="margin: 0 auto;">
+       <tr>
+         <td>Código Cliente: </td>
+         <td><em id="COD_CLIENTE"></em></td>
+         <td>
+         </td>
+       </tr>
+       <tr>
+         <td>Nombre de Usuario: </td>
+         <td><em id="NOM_CLIENTE"></em></td>
+         <td>
+         </td>
+       </tr>
+       <tr>
+         <td>Cédula: </td>
+         <td><em id="CEDULA"></em></td>
+         <td>
+         </td>
+       </tr>
+       <tr>
+         <td>Número de Teléfono 1: </td>
+         <td><em id="NUM_TELEFONO1"></em></td>
+         <td>
+         </td>
+       </tr>
+       <tr>
+         <td>Número de Teléfono 2: </td>
+         <td><em id="NUM_TELEFONO2"></em></td>
+         <td>
+         </td>
+       </tr>
+       <tr>
+         <td>Número de Fax: </td>
+         <td><em id="NUM_FAX"></em></td>
+         <td>
+         </td>
+       </tr>
+       <tr>
+         <td>Email: </td>
+         <td><em id="EMAIL"></em></td>
+         <td>
+         </td>
+       </tr>
+       <tr>
+         <td>Dirección de Envio: </td>
+         <td><em id="DIRECCION_ENVIO"></em></td>
+         <td>
+         </td>
+       </tr>
+       <tr>
+         <td>Frecuencia de envio de estados de cuenta: </td>
+         <td><em id="FREC_ESTADO"></em></td>
+         <td>
+         </td>
+       </tr>
+     </table>
+   </div>
+ </div>
 
- <table class="table">
-    <tr>
-      <td align="center">
-        <div class="well">
-           <ul class="nav nav-tabs">
-             <li class="active"><h1 href="#home" data-toggle="tab" >Perfil</h1></li>
-           </ul>
-           <div id="myTabContent" class="tab-content">
-             <div class="tab-pane active in" id="home">
-               <form id="tab" action="conexion/metodos.php?gdata" method="post">
-                   <label>Código de Cliente</label>
-                   <input type="text" value="123" class="input-xlarge" readonly>
-                   <td><em id="NOM_CLIENTE"></em></td>
-                   <br></br>
-                   <label>Nombre</label>
-                   <input type="text" value="ERICK CORDERO" class="input-xlarge" readonly>
-                   <td><em id="person_name"></em></td>
-                   <br></br>
-                   <label>Cédula</label>
-                   <input type="text" value="207220864" class="input-xlarge" readonly>
-                   <td><em id="CEDULA"></em></td>
-                   <br></br>
-                   <label>Teléfono</label>
-                   <input type="text" value="24430139" class="input-xlarge" readonly>
-                   <td><em id="NUM_TELEFONO1"></em></td>
-                   <br></br>
-                   <label>Teléfono2</label>
-                   <input type="text" value="87022315" class="input-xlarge" readonly>
-                   <td><em id="NUM_TELEFONO2"></em></td>
-                   <br></br>
-                   <label>FAX</label>
-                   <input type="text" value="" class="input-xlarge" readonly>
-                   <td><em id="NUM_FAX"></em></td>
-                   <br></br>
-                   <label>Email</label>
-                   <input type="text" value="eguicoro2@gmail.com" class="input-xlarge" readonly>
-                   <td><em id="EMAIL"></em></td>
-                   <br></br>
-                   <label>Dirección de Envio</label>
-                   <textarea value="Smith" rows="3" class="input-xlarge" readonly>Guadalupe, Alajuela
-                   </textarea>
-                   <td><em id="DIRECCION_ENVIO"></em></td>
-                   <br></br>
-                   <label>Frecuencia de envio de estado de cuenta</label>
-                   <select name="DropDownTimezone" id="DropDownTimezone" class="input-xlarge">
-                     <option value="Mensual">Mensual</option>
-                     <option value="Semanal">Semanal</option>
-                     <option value="Cada 2 semanas">Cada 2 semanas</option>
-                     <option value="Cada 2 meses">Cada 2 meses</option>
-                   </select>
-                 	<div>
-               	    <button class="btn btn-primary">Actualizar</button>
-               	</div>
-
-                <?php
-                  //se incluyen los archivos necesarios.
-                  require_once ('php/conexion/conexion.php');
-                  require_once ('php/conexion/metodos.php');
-                  echo "<script>console.log( 'Debug Objects: " . "sirve1". "' );</script>";
-                ?>
-
-               </form>
-             </div>
-           </div>
-         </div>
-      </td>
-    </tr>
- </table>
+ <div class="container" style="text-align:center;">
+   <form role="form" action="metodos/update.php" method="post">
+     <select id="frec" name="frec">
+        <option value="Semanal">Semanal</option>
+        <option value="Quincenal">Quincenal</option>
+        <option value="Mensual">Mensual</option>
+        <option value="Bimestral">Bimestral</option>
+    </select>
+    <br></br>
+    <button type="submit">Actualizar</button>
+  </form>
+ </div>
 
 </body>
 
@@ -145,12 +151,20 @@ $(document).ready(function () {
   $("#success-alert").hide();
   $.ajax({
     type: "GET",
-    url: "webservices/profile.php",
+    url: "metodos/getDatos.php",
     success: function(data){
+    console.log("data: "+data);
     var obj = $.parseJSON(data);
-    $('#person_name').html(obj.name + " " + '<button type="button" class="btn btn-default btn-xs" aria-label="Edit" data-toggle="modal" data-target="#modal_nombre"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar</button>');
-    $('#person_email').html(obj.email);
-    $('#person_nick').html(obj.nick);
+    $('#NOM_CLIENTE').html(obj.NOM_CLIENTE);
+    $('#COD_CLIENTE').html(obj.COD_CLIENTE);
+    $('#EMAIL').html(obj.EMAIL);
+    $('#CEDULA').html(obj.CEDULA);
+    $('#NUM_TELEFONO1').html(obj.NUM_TELEFONO1);
+    $('#NUM_TELEFONO2').html(obj.NUM_TELEFONO2);
+    $('#NUM_FAX').html(obj.NUM_FAX);
+    $('#DIRECCION_ENVIO').html(obj.DIRECCION_ENVIO);
+    $('#FREC_ESTADO').html(obj.FREC_ESTADO);
+    $('#frec option:contains(' + $('#FREC_ESTADO').html(obj.FREC_ESTADO)["0"].innerText + ')').prop({selected: true});
     }
   });
 });

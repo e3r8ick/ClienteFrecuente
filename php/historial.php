@@ -62,11 +62,12 @@
        var mensaje = confirm("¿Desea cerrar sesión?");
        //Detectamos si el usuario acepto el mensaje
        if (mensaje) {
-       window.location.replace("metodos/logout.php");
+         document.cookie = COD_CLIENTE + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+         window.location.replace("metodos/logout.php");
        }
        //Detectamos si el usuario denegó el mensaje
        else {
-       window.location.replace("perfil.php");
+         window.location.replace("perfil.php");
     }
   }
   </script>
@@ -75,21 +76,23 @@
  </div><!--end mainWrap-->
 
 
- <table>
+ <table style="margin: 0 auto;">
+   <br></br>
     <tr>
-      <td align="center">
-        <div class="well">
-           <ul class="nav nav-tabs">
+      <td align="center" style="text-align:center;">
+        <div class="well" style="text-align:center;">
+           <ul class="nav nav-tabs" style="text-align:center;">
              <li class="active"><h1 href="#home" data-toggle="tab" >Historial de Transacciones</h1></li>
            </ul>
-           <div id="myTabContent" class="tab-content">
+           <br></br>
+           <div id="myTabContent" class="tab-content" style="text-align:center;">
              <div class="tab-pane active in" id="home">
-               <form id="tab">
-                 <input type="date" data-date-inline-picker="true" />
-                 <input type="date" data-date-inline-picker="true" />
+               <form id="date" action="metodos/getHistorial.php" method="post" name="date">
+                 <input id="date1" name="date1" type="date" data-date-inline-picker="true" />
+                 <input id="date2" name="date2" type="date" data-date-inline-picker="true" />
                  <br></br>
                  	<div>
-               	    <button class="btn btn-primary">Generar historial</button>
+               	    <button type="submit" class="btn btn-primary">Generar historial</button>
                	</div>
                </form>
              </div>
@@ -100,6 +103,30 @@
  </table>
 
 </body>
+
+<script>
+$(document).ready(function () {
+  $("#success-alert").hide();
+  $.ajax({
+    type: "GET",
+    url: "metodos/getDatos.php",
+    success: function(data){
+    console.log("data: "+data);
+    var obj = $.parseJSON(data);
+    $('#NOM_CLIENTE').html(obj.NOM_CLIENTE);
+    $('#COD_CLIENTE').html(obj.COD_CLIENTE);
+    $('#EMAIL').html(obj.EMAIL);
+    $('#CEDULA').html(obj.CEDULA);
+    $('#NUM_TELEFONO1').html(obj.NUM_TELEFONO1);
+    $('#NUM_TELEFONO2').html(obj.NUM_TELEFONO2);
+    $('#NUM_FAX').html(obj.NUM_FAX);
+    $('#DIRECCION_ENVIO').html(obj.DIRECCION_ENVIO);
+    $('#FREC_ESTADO').html(obj.FREC_ESTADO);
+    $('#frec option:contains(' + $('#FREC_ESTADO').html(obj.FREC_ESTADO)["0"].innerText + ')').prop({selected: true});
+    }
+  });
+});
+</script>
 
 <?php
   echo '<input type="hidden" id="username" value="'.$_SESSION['username'].'">';

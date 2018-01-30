@@ -3,7 +3,6 @@
 
 /* RESET STYLES */
 *, html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, label, fieldset, input, p, blockquote, th, td { margin:0; padding:0 }
-table { border-collapse:collapse; border-spacing:0 }
 fieldset, img { border:0 }
 address, caption, cite, code, dfn, em, strong, th, var { font-style:normal; font-weight:normal }
 ol, ul, li { list-style:none }
@@ -220,6 +219,24 @@ width:100%;}
 @media (max-width: 320px) {
 }
 
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    text-align:center;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    text-align:center;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+    text-align:center;
+}
 
 .input{
   background: none repeat scroll 0 0 #66A3D2;
