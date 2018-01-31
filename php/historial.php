@@ -93,6 +93,7 @@
                  <br></br>
                  	<div>
                	    <button type="submit" class="btn btn-primary">Generar historial</button>
+                    <br></br>
                	</div>
                </form>
              </div>
@@ -102,6 +103,9 @@
     </tr>
  </table>
 
+ <table type="hidden" id="historial" class="odd" style="margin: 0 auto;">
+</table>
+
 </body>
 
 <script>
@@ -109,20 +113,40 @@ $(document).ready(function () {
   $("#success-alert").hide();
   $.ajax({
     type: "GET",
-    url: "metodos/getDatos.php",
+    url: "metodos/getHistorial.php",
     success: function(data){
-    console.log("data: "+data);
-    var obj = $.parseJSON(data);
-    $('#NOM_CLIENTE').html(obj.NOM_CLIENTE);
-    $('#COD_CLIENTE').html(obj.COD_CLIENTE);
-    $('#EMAIL').html(obj.EMAIL);
-    $('#CEDULA').html(obj.CEDULA);
-    $('#NUM_TELEFONO1').html(obj.NUM_TELEFONO1);
-    $('#NUM_TELEFONO2').html(obj.NUM_TELEFONO2);
-    $('#NUM_FAX').html(obj.NUM_FAX);
-    $('#DIRECCION_ENVIO').html(obj.DIRECCION_ENVIO);
-    $('#FREC_ESTADO').html(obj.FREC_ESTADO);
-    $('#frec option:contains(' + $('#FREC_ESTADO').html(obj.FREC_ESTADO)["0"].innerText + ')').prop({selected: true});
+    // Obtener la referencia del elemento body
+    var body = document.getElementsByTagName("body")[0];
+
+    // Crea un elemento <table> y un elemento <tbody>
+    var tabla   = document.createElement("table");
+    var tblBody = document.createElement("tbody");
+
+    // Crea las celdas
+    for (var i = 0; i < 2; i++) {
+      // Crea las hileras de la tabla
+      var hilera = document.createElement("tr");
+
+      for (var j = 0; j < 2; j++) {
+        // Crea un elemento <td> y un nodo de texto, haz que el nodo de
+        // texto sea el contenido de <td>, ubica el elemento <td> al final
+        // de la hilera de la tabla
+        var celda = document.createElement("td");
+        var textoCelda = document.createTextNode("celda en la hilera "+i+", columna "+j);
+        celda.appendChild(textoCelda);
+        hilera.appendChild(celda);
+      }
+
+      // agrega la hilera al final de la tabla (al final del elemento tblbody)
+      tblBody.appendChild(hilera);
+    }
+
+    // posiciona el <tbody> debajo del elemento <table>
+    tabla.appendChild(tblBody);
+    // appends <table> into <body>
+    body.appendChild(tabla);
+    // modifica el atributo "border" de la tabla y lo fija a "2";
+    tabla.setAttribute("border", "2");
     }
   });
 });

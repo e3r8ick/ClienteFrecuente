@@ -68,63 +68,73 @@
  }
 
  </script>
- <div class="container" style="text-align:center;">
-   <div class="jumbotron" style="text-align:center;">
+ <div class="container">
+   <div class="jumbotron" >
      <br>
-         <h2 id="perfil">PERFIL</h2>
+         <h2 id="perfil" style="text-align:center;">PERFIL</h2>
+         <br></br>
    <table class="table" style="margin: 0 auto;">
        <tr>
          <td>Código Cliente: </td>
          <td><em id="COD_CLIENTE"></em></td>
          <td>
+           <br></br>
          </td>
        </tr>
        <tr>
          <td>Nombre de Usuario: </td>
          <td><em id="NOM_CLIENTE"></em></td>
          <td>
+           <br></br>
          </td>
        </tr>
        <tr>
          <td>Cédula: </td>
          <td><em id="CEDULA"></em></td>
          <td>
+           <br></br>
          </td>
        </tr>
        <tr>
          <td>Número de Teléfono 1: </td>
          <td><em id="NUM_TELEFONO1"></em></td>
          <td>
+           <br></br>
          </td>
        </tr>
        <tr>
          <td>Número de Teléfono 2: </td>
          <td><em id="NUM_TELEFONO2"></em></td>
          <td>
+           <br></br>
          </td>
        </tr>
        <tr>
          <td>Número de Fax: </td>
          <td><em id="NUM_FAX"></em></td>
          <td>
+           <br></br>
          </td>
        </tr>
        <tr>
          <td>Email: </td>
          <td><em id="EMAIL"></em></td>
          <td>
+           <br></br>
          </td>
        </tr>
        <tr>
          <td>Dirección de Envio: </td>
          <td><em id="DIRECCION_ENVIO"></em></td>
          <td>
+           <br></br>
          </td>
        </tr>
        <tr>
          <td>Frecuencia de envio de estados de cuenta: </td>
          <td><em id="FREC_ESTADO"></em></td>
          <td>
+           <br></br>
          </td>
        </tr>
      </table>

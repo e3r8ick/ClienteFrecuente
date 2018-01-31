@@ -6,10 +6,10 @@
   $Pusuario = $_COOKIE["COD_CLIENTE"];
   $Pfecha1 = $_POST['date1'];
   $Pfecha2 = $_POST['date2'];
-  
-  //se crea la sentencia SQL
-  $sql = "SELECT FECHA, DOCUMENTO, SUCURSAL, ARTICULO, MONTO, PUNTOSOBT, PUNTOSUSA, PUNTOS, PUNTOSTRA FROM FREPUNTOS WHERE CLIENTE = ?";
 
+  //se crea la sentencia SQL
+  //$sql = "SELECT FECHA, DOCUMENTO, SUCURSAL, ARTICULO, MONTO, PUNTOSOBT, PUNTOSUSA, PUNTOS, PUNTOSTRA FROM FREPUNTOS WHERE CLIENTE = ?";
+  $sql = "SELECT COUNT(DOCUMENTO) FROM FREPUNTOS WHERE CLIENTE =?";
   //se prepara el statement con la sentencia previamente creada
   $stmt = $conexion->prepare($sql);
 
