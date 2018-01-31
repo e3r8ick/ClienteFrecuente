@@ -77,65 +77,38 @@
        <tr>
          <td>Código Cliente: </td>
          <td><em id="COD_CLIENTE"></em></td>
-         <td>
-           <br></br>
-         </td>
        </tr>
        <tr>
          <td>Nombre de Usuario: </td>
          <td><em id="NOM_CLIENTE"></em></td>
-         <td>
-           <br></br>
-         </td>
        </tr>
        <tr>
          <td>Cédula: </td>
          <td><em id="CEDULA"></em></td>
-         <td>
-           <br></br>
-         </td>
        </tr>
        <tr>
          <td>Número de Teléfono 1: </td>
          <td><em id="NUM_TELEFONO1"></em></td>
-         <td>
-           <br></br>
-         </td>
        </tr>
        <tr>
          <td>Número de Teléfono 2: </td>
          <td><em id="NUM_TELEFONO2"></em></td>
-         <td>
-           <br></br>
-         </td>
        </tr>
        <tr>
          <td>Número de Fax: </td>
          <td><em id="NUM_FAX"></em></td>
-         <td>
-           <br></br>
-         </td>
        </tr>
        <tr>
          <td>Email: </td>
          <td><em id="EMAIL"></em></td>
-         <td>
-           <br></br>
-         </td>
        </tr>
        <tr>
          <td>Dirección de Envio: </td>
          <td><em id="DIRECCION_ENVIO"></em></td>
-         <td>
-           <br></br>
-         </td>
        </tr>
        <tr>
          <td>Frecuencia de envio de estados de cuenta: </td>
          <td><em id="FREC_ESTADO"></em></td>
-         <td>
-           <br></br>
-         </td>
        </tr>
      </table>
    </div>
@@ -143,6 +116,8 @@
 
  <div class="container" style="text-align:center;">
    <form role="form" action="metodos/update.php" method="post">
+     <br></br>
+     <h4>Cambiar frecuencia de envio</h4>
      <select id="frec" name="frec">
         <option value="Semanal">Semanal</option>
         <option value="Quincenal">Quincenal</option>
@@ -179,10 +154,4 @@ $(document).ready(function () {
   });
 });
 </script>
-
-<?php
-  echo '<input type="hidden" id="username" value="'.$_SESSION['username'].'">';
-  echo "<script>console.log( 'Debug Objects: " .$_SESSION['username']. "' );</script>";
-?>
-
 </html>

@@ -27,12 +27,6 @@
 	<link rel="stylesheet" href="../css/perfil.css" type="text/css" media="screen">
     <link rel="stylesheet" href="../css/font-awesome.css" >
 
-     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-      <script src="http://css3-mediaqueries-js.googlecode.com/files/css3-mediaqueries.js"></script>
-    <![endif]-->
-
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript" ></script>
     <script src="../js/perfil.js" type="text/javascript"></script>
 
@@ -53,7 +47,10 @@
   <li><a  href="historial.php"><i class="icon-list-ul"></i>HISTORIAL DE TRANSACCIONES</a></li>
   <li><a  href="ayuda.php"><i class="icon-envelope-alt"></i>AYUDA</a></li>
   <li><a  href="#" onclick="DoLogout()"><i class="icon-off"></i>CERRAR SESIÓN</a></li>
-  <script>
+  </ul>
+  </nav>
+</div><!--end mainWrap-->
+<script>
     //funcion que muestra una confirm box para
     //verificar si se desea cerrar sesion.
     function DoLogout(){
@@ -127,13 +124,21 @@ $(document).ready(function () {
       // Crea las hileras de la tabla
       var hilera = document.createElement("tr");
 
-      for (var j = 0; j < 2; j++) {
+      for (var j = 0; j < 10; j++) {
         // Crea un elemento <td> y un nodo de texto, haz que el nodo de
         // texto sea el contenido de <td>, ubica el elemento <td> al final
-        // de la hilera de la tabla
+        // de la hilera de la table
         var celda = document.createElement("td");
+        var id = document.createElement("em").setAttribute("id", "FECHA");
+
+        //creamos todos los elementos
+        /*var obj = $.parseJSON(data);
+        console.log("data: "+data);
+        $('#FECHA').html(obj.FECHA);*/
+
         var textoCelda = document.createTextNode("celda en la hilera "+i+", columna "+j);
         celda.appendChild(textoCelda);
+        celda.appendChild(id); 
         hilera.appendChild(celda);
       }
 
@@ -151,10 +156,4 @@ $(document).ready(function () {
   });
 });
 </script>
-
-<?php
-  echo '<input type="hidden" id="username" value="'.$_SESSION['username'].'">';
-  echo "<script>console.log( 'Debug Objects: " .$_SESSION['username']. "' );</script>";
-?>
-
 </html>

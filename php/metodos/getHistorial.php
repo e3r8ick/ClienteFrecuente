@@ -8,8 +8,8 @@
   $Pfecha2 = $_POST['date2'];
 
   //se crea la sentencia SQL
-  //$sql = "SELECT FECHA, DOCUMENTO, SUCURSAL, ARTICULO, MONTO, PUNTOSOBT, PUNTOSUSA, PUNTOS, PUNTOSTRA FROM FREPUNTOS WHERE CLIENTE = ?";
-  $sql = "SELECT COUNT(DOCUMENTO) FROM FREPUNTOS WHERE CLIENTE =?";
+  $sql = "SELECT FECHA, DOCUMENTO, SUCURSAL, ARTICULO, MONTO, PUNTOSOBT, PUNTOSUSA, PUNTOS, PUNTOSTRA FROM FREPUNTOS WHERE CLIENTE = ?";
+
   //se prepara el statement con la sentencia previamente creada
   $stmt = $conexion->prepare($sql);
 
@@ -26,7 +26,7 @@
     //se retorna el $result;
     $result = json_encode($result);
     echo ($result);
-    //header('location: ../perfil.php');
+    header('location: ../historial.php');
 
   }else{
     //si el statement da error

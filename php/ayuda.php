@@ -110,10 +110,4 @@
  </table>
 
 </body>
-
-<?php
-  echo '<input type="hidden" id="username" value="'.$_SESSION['username'].'">';
-  echo "<script>console.log( 'Debug Objects: " .$_SESSION['username']. "' );</script>";
-?>
-
 </html>
