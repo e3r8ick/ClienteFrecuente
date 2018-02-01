@@ -4,8 +4,11 @@
   $conexion = $con->get_Conexion();
 
   $Pusuario = $_COOKIE["COD_CLIENTE"];
-  $Pfecha1 = $_POST['date1'];
-  $Pfecha2 = $_POST['date2'];
+
+  if (!empty($_POST)){
+    $Pfecha1 = null;
+    $Pfecha2 = null;
+  }
 
   //se crea la sentencia SQL
   $sql = "SELECT FECHA, DOCUMENTO, SUCURSAL, ARTICULO, MONTO, PUNTOSOBT, PUNTOSUSA, PUNTOS, PUNTOSTRA FROM FREPUNTOS WHERE CLIENTE = ?";
@@ -26,7 +29,7 @@
     //se retorna el $result;
     $result = json_encode($result);
     echo ($result);
-    header('location: ../historial.php');
+    //header('location: ../historial.php');
 
   }else{
     //si el statement da error

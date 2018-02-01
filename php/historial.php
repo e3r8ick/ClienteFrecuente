@@ -100,7 +100,18 @@
     </tr>
  </table>
 
- <table type="hidden" id="historial" class="odd" style="margin: 0 auto;">
+ <table id="historial" class="odd" style="margin: 0 auto;">
+   <tr>
+    <th>FECHA</th>
+    <th>DOCUMENTO</th>
+    <th>SUCURSAL</th>
+    <th>DESCRIPCIÓN</th>
+    <th>MONTO</th>
+    <th>PUNTOS OBTENIDOS</th>
+    <th>PUNTOS GASTADOS</th>
+    <th>SALDO</th>
+    <th>DETALLES</th>
+  </tr>
 </table>
 
 </body>
@@ -116,29 +127,26 @@ $(document).ready(function () {
     var body = document.getElementsByTagName("body")[0];
 
     // Crea un elemento <table> y un elemento <tbody>
-    var tabla   = document.createElement("table");
+    var tabla   = document.getElementById("historial");
     var tblBody = document.createElement("tbody");
+
+    //creamos un array con los titulos de cada linea
+    var titulos = ["FECHA", "DOCUMENTO", "SUCURSAL", "ARTICULO", "MONTO", "PUNTOSOBT", "PUNTOSUSA", "PUNTOS", "DETALLES"];
 
     // Crea las celdas
     for (var i = 0; i < 2; i++) {
       // Crea las hileras de la tabla
       var hilera = document.createElement("tr");
 
-      for (var j = 0; j < 10; j++) {
+      for (var j = 0; j < 9; j++) {
         // Crea un elemento <td> y un nodo de texto, haz que el nodo de
         // texto sea el contenido de <td>, ubica el elemento <td> al final
         // de la hilera de la table
         var celda = document.createElement("td");
-        var id = document.createElement("em").setAttribute("id", "FECHA");
+        var id = document.createElement("em");
+        id.setAttribute("id", titulos[j]);
 
-        //creamos todos los elementos
-        /*var obj = $.parseJSON(data);
-        console.log("data: "+data);
-        $('#FECHA').html(obj.FECHA);*/
-
-        var textoCelda = document.createTextNode("celda en la hilera "+i+", columna "+j);
-        celda.appendChild(textoCelda);
-        celda.appendChild(id); 
+        celda.appendChild(id);
         hilera.appendChild(celda);
       }
 
@@ -152,6 +160,19 @@ $(document).ready(function () {
     body.appendChild(tabla);
     // modifica el atributo "border" de la tabla y lo fija a "2";
     tabla.setAttribute("border", "2");
+
+    //seteamos los valores
+    console.log("data: "+data);
+    var obj = $.parseJSON(data);
+    $('#FECHA').html(obj.FECHA);
+    $('#DOCUMENTO').html(obj.DOCUMENTO);
+    $('#SUCURSAL').html(obj.SUCURSAL);
+    $('#ARTICULO').html(obj.ARTICULO);
+    $('#MONTO').html(obj.MONTO);
+    $('#PUNTOSOBT').html(obj.PUNTOSOBT);
+    $('#PUNTOSUSA').html(obj.PUNTOSUSA);
+    $('#PUNTOS').html(obj.PUNTOS);
+    $('#PUNTOSTRA').html(obj.PUNTOSTRA);
     }
   });
 });
