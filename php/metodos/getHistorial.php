@@ -5,10 +5,16 @@
 
   $Pusuario = $_COOKIE["COD_CLIENTE"];
 
+  $row = array();
+
   if (!empty($_POST)){
     $Pfecha1 = null;
     $Pfecha2 = null;
+  }else{
+    /*$Pfecha1 = $_POST["date1"];
+    $Pfecha2 = $_POST["date2"];*/ 
   }
+
 
   //se crea la sentencia SQL
   $sql = "SELECT FECHA, DOCUMENTO, SUCURSAL, ARTICULO, MONTO, PUNTOSOBT, PUNTOSUSA, PUNTOS, PUNTOSTRA FROM FREPUNTOS WHERE CLIENTE = ?";
@@ -21,18 +27,15 @@
     //que coincida con el usuario y la clave ademas del cia.
     //en el execute se agregan las variables por medio de un array.
     $stmt->execute(array($Pusuario));
-    //se toman todos los resultados y se unen
-    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    foreach($stmt->fetchAll() as $k=>$v) {
-        //echo $v;
-        $result = json_encode($v);
+    while($fila = $stmt->fetch()){
+      $row[] = $fila;
     }
 
     //se cierra la conexion
     $conexion = null;
 
     //se retorna el $result;
-    //$result = json_encode($result);
+    $result = json_encode($row);
     echo ($result);
     //header('location: ../historial.php');
 

@@ -124,6 +124,7 @@ $(document).ready(function () {
     type: "GET",
     url: "metodos/getHistorial.php",
     success: function(data){
+    var obj = $.parseJSON(data);
     // Obtener la referencia del elemento body
     var body = document.getElementsByTagName("body")[0];
 
@@ -135,7 +136,7 @@ $(document).ready(function () {
     var titulos = ["FECHA", "DOCUMENTO", "SUCURSAL", "ARTICULO", "MONTO", "PUNTOSOBT", "PUNTOSUSA", "PUNTOS", "DETALLES"];
 
     // Crea las celdas
-    for (var i = 0; i < 2; i++) {
+    for (var i = 0; i < obj.length; i++) {
       // Crea las hileras de la tabla
       var hilera = document.createElement("tr");
 
@@ -145,7 +146,7 @@ $(document).ready(function () {
         // de la hilera de la table
         var celda = document.createElement("td");
         var id = document.createElement("em");
-        id.setAttribute("id", titulos[j]);
+        id.setAttribute("id", titulos[j]+i);
 
         celda.appendChild(id);
         hilera.appendChild(celda);
@@ -164,16 +165,20 @@ $(document).ready(function () {
 
     //seteamos los valores
     console.log("data: "+data);
-    var obj = $.parseJSON(data);
-    $('#FECHA').html(obj.FECHA);
-    $('#DOCUMENTO').html(obj.DOCUMENTO);
-    $('#SUCURSAL').html(obj.SUCURSAL);
-    $('#ARTICULO').html(obj.ARTICULO);
-    $('#MONTO').html(obj.MONTO);
-    $('#PUNTOSOBT').html(obj.PUNTOSOBT);
-    $('#PUNTOSUSA').html(obj.PUNTOSUSA);
-    $('#PUNTOS').html(obj.PUNTOS);
-    $('#PUNTOSTRA').html(obj.PUNTOSTRA);
+    for(i=0; i<obj.length; i++){
+      $('#FECHA'+i).html(obj[i].FECHA);
+      $('#DOCUMENTO'+i).html(obj[i].DOCUMENTO);
+      $('#SUCURSAL'+i).html(obj[i].SUCURSAL);
+      $('#ARTICULO'+i).html(obj[i].ARTICULO);
+      $('#MONTO'+i).html(obj[i].MONTO);
+      $('#PUNTOSOBT'+i).html(obj[i].PUNTOSOBT);
+      $('#PUNTOSUSA'+i).html(obj[i].PUNTOSUSA);
+      $('#PUNTOS'+i).html(obj[i].PUNTOS);
+      $('#PUNTOSTRA'+i).html(obj[i].PUNTOSTRA);
+      var detalles = document.getElementById("DETALLES"+i);
+      detalles.setAttribute("href","Detalles");
+      detalles.setAttribute("value", "Detalles");
+    }
     }
   });
 });
