@@ -62,7 +62,8 @@
        var mensaje = confirm("¿Desea cerrar sesión?");
        //Detectamos si el usuario acepto el mensaje
        if (mensaje) {
-         document.cookie = COD_CLIENTE + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+         document.cookie = "COD_CLIENTE" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+         document.cookie = "NOM_CLIENTE" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
          window.location.replace("metodos/logout.php");
        }
        //Detectamos si el usuario denegó el mensaje
@@ -89,10 +90,10 @@
              <div class="tab-pane active in" id="home">
                <form id="tab">
                    <label>Código de Cliente</label>
-                   <input type="text" value="123" class="input-xlarge" readonly>
+                   <input id="COD_CLIENTE" type="text" class="input-xlarge" readonly>
                     <br></br>
                    <label>Nombre</label>
-                   <input type="text" value="ERICK CORDERO" class="input-xlarge" readonly>
+                   <input type="text" id="NOMBRE" class="input-xlarge" readonly>
                     <br></br>
                    <label>Descripción del problema</label>
                    <textarea value="Smith" rows="3" class="input-xlarge">
@@ -108,6 +109,25 @@
       </td>
     </tr>
  </table>
+
+ <script>
+ $(document).ready(function () {
+   $("#success-alert").hide();
+   var usuarioC = document.getElementById("COD_CLIENTE");
+   var usuarioN = document.getElementById("NOMBRE");
+
+   //obtenemos el COD_CLIENTE y el NOM_CLIENTE
+   usuarioC.setAttribute("value", getCookie("COD_CLIENTE"));
+   //hacemos un replace porque el cookie se guarda con un +
+   var nom = getCookie("NOM_CLIENTE").replace("+", " ");
+   usuarioN.setAttribute("value", nom);
+ });
+
+ function getCookie(name) {
+    var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+    return v ? v[2] : null;
+}
+ </script>
 
 </body>
 </html>

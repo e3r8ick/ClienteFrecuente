@@ -21,6 +21,9 @@
     //se cierra la conexion
     $conexion = null;
 
+    //se setea el cookie con el nombre del usuario
+    setcookie("NOM_CLIENTE", $result[0], time() + 3600, "/");
+
     //se retorna el $result;
     $result = json_encode($result);
     echo ($result);
