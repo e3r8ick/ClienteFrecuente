@@ -21,13 +21,18 @@
     //que coincida con el usuario y la clave ademas del cia.
     //en el execute se agregan las variables por medio de un array.
     $stmt->execute(array($Pusuario));
-    $result = $stmt->fetch();
+    //se toman todos los resultados y se unen
+    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    foreach($stmt->fetchAll() as $k=>$v) {
+        //echo $v;
+        $result = json_encode($v);
+    }
 
     //se cierra la conexion
     $conexion = null;
 
     //se retorna el $result;
-    $result = json_encode($result);
+    //$result = json_encode($result);
     echo ($result);
     //header('location: ../historial.php');
 
