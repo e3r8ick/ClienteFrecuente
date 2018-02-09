@@ -11,13 +11,13 @@
     $Pfecha1 = null;
     $Pfecha2 = null;
   }else{
-    /*$Pfecha1 = $_POST["date1"];
-    $Pfecha2 = $_POST["date2"];*/ 
+    $Pfecha1 = $_POST["date1"];
+    $Pfecha2 = $_POST["date2"];
   }
 
 
   //se crea la sentencia SQL
-  $sql = "SELECT FECHA, DOCUMENTO, SUCURSAL, ARTICULO, MONTO, PUNTOSOBT, PUNTOSUSA, PUNTOS, PUNTOSTRA FROM FREPUNTOS WHERE CLIENTE = ?";
+  $sql = "SELECT FREPUNTOS.FECHA, FREPUNTOS.DOCUMENTO, FREPUNTOS.SUCURSAL, FREPUNTOS.ARTICULO, FREPUNTOS.MONTO, FREPUNTOSV.PUNTOSOBT, FREPUNTOSV.PUNTOSTRA FROM FREPUNTOS INNER JOIN FREPUNTOSV ON FREPUNTOS.CLIENTE = FREPUNTOSV.CLIENTE WHERE FREPUNTOS.CLIENTE = ?";
 
   //se prepara el statement con la sentencia previamente creada
   $stmt = $conexion->prepare($sql);
@@ -37,7 +37,7 @@
     //se retorna el $result;
     $result = json_encode($row);
     echo ($result);
-    //header('location: ../historial.php');
+    header('location: ../historial.php');
 
   }else{
     //si el statement da error

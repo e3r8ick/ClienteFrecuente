@@ -110,7 +110,6 @@
     <th>MONTO</th>
     <th>PUNTOS OBTENIDOS</th>
     <th>PUNTOS GASTADOS</th>
-    <th>SALDO</th>
     <th>DETALLES</th>
   </tr>
 </table>
@@ -133,14 +132,14 @@ $(document).ready(function () {
     var tblBody = document.createElement("tbody");
 
     //creamos un array con los titulos de cada linea
-    var titulos = ["FECHA", "DOCUMENTO", "SUCURSAL", "ARTICULO", "MONTO", "PUNTOSOBT", "PUNTOSUSA", "PUNTOS", "DETALLES"];
+    var titulos = ["FECHA", "DOCUMENTO", "SUCURSAL", "ARTICULO", "MONTO", "PUNTOSOBT", "PUNTOSTRA", "DETALLES"];
 
     // Crea las celdas
     for (var i = 0; i < obj.length; i++) {
       // Crea las hileras de la tabla
       var hilera = document.createElement("tr");
 
-      for (var j = 0; j < 9; j++) {
+      for (var j = 0; j < 8; j++) {
         // Crea un elemento <td> y un nodo de texto, haz que el nodo de
         // texto sea el contenido de <td>, ubica el elemento <td> al final
         // de la hilera de la table
@@ -172,8 +171,6 @@ $(document).ready(function () {
       $('#ARTICULO'+i).html(obj[i].ARTICULO);
       $('#MONTO'+i).html(obj[i].MONTO);
       $('#PUNTOSOBT'+i).html(obj[i].PUNTOSOBT);
-      $('#PUNTOSUSA'+i).html(obj[i].PUNTOSUSA);
-      $('#PUNTOS'+i).html(obj[i].PUNTOS);
       $('#PUNTOSTRA'+i).html(obj[i].PUNTOSTRA);
       var detalles = document.getElementById("DETALLES"+i);
       detalles.setAttribute("href","Detalles");
