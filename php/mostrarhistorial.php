@@ -85,7 +85,8 @@
            <br></br>
            <div id="myTabContent" class="tab-content" style="text-align:center;">
              <div class="tab-pane active in" id="home">
-               <form id="date" action="metodos/setFechas.php" method="post" name="date">
+               <f
+               orm id="date" action="metodos/getHistorial.php" method="post" name="date">
                  <input id="date1" name="date1" type="date" data-date-inline-picker="true" />
                  <input id="date2" name="date2" type="date" data-date-inline-picker="true" />
                  <br></br>
@@ -101,6 +102,83 @@
     </tr>
  </table>
 
+ <table id="historial" class="odd" style="margin: 0 auto;">
+   <tr>
+    <th>FECHA</th>
+    <th>DOCUMENTO</th>
+    <th>SUCURSAL</th>
+    <th>DESCRIPCIÓN</th>
+    <th>MONTO</th>
+    <th>PUNTOS OBTENIDOS</th>
+    <th>PUNTOS GASTADOS</th>
+    <th>DETALLES</th>
+  </tr>
+</table>
+
 </body>
 
+<script>
+$(document).ready(function () {
+  $("#success-alert").hide();
+  $.ajax({
+    type: "GET",
+    url: "metodos/getHistorial.php",
+    success: function(data){
+    var obj = $.parseJSON(data);
+    // Obtener la referencia del elemento body
+    var body = document.getElementsByTagName("body")[0];
+
+    // Crea un elemento <table> y un elemento <tbody>
+    var tabla   = document.getElementById("historial");
+    var tblBody = document.createElement("tbody");
+
+    //creamos un array con los titulos de cada linea
+    var titulos = ["FECHA", "DOCUMENTO", "SUCURSAL", "ARTICULO", "MONTO", "PUNTOSOBT", "PUNTOSTRA", "DETALLES"];
+
+    // Crea las celdas
+    for (var i = 0; i < obj.length; i++) {
+      // Crea las hileras de la tabla
+      var hilera = document.createElement("tr");
+
+      for (var j = 0; j < 8; j++) {
+        // Crea un elemento <td> y un nodo de texto, haz que el nodo de
+        // texto sea el contenido de <td>, ubica el elemento <td> al final
+        // de la hilera de la table
+        var celda = document.createElement("td");
+        var id = document.createElement("em");
+        id.setAttribute("id", titulos[j]+i);
+
+        celda.appendChild(id);
+        hilera.appendChild(celda);
+      }
+
+      // agrega la hilera al final de la tabla (al final del elemento tblbody)
+      tblBody.appendChild(hilera);
+    }
+
+    // posiciona el <tbody> debajo del elemento <table>
+    tabla.appendChild(tblBody);
+    // appends <table> into <body>
+    body.appendChild(tabla);
+    // modifica el atributo "border" de la tabla y lo fija a "2";
+    tabla.setAttribute("border", "2");
+
+    //seteamos los valores
+    console.log("data: "+data);
+    for(i=0; i<obj.length; i++){
+      $('#FECHA'+i).html(obj[i].FECHA);
+      $('#DOCUMENTO'+i).html(obj[i].DOCUMENTO);
+      $('#SUCURSAL'+i).html(obj[i].SUCURSAL);
+      $('#ARTICULO'+i).html(obj[i].ARTICULO);
+      $('#MONTO'+i).html(obj[i].MONTO);
+      $('#PUNTOSOBT'+i).html(obj[i].PUNTOSOBT);
+      $('#PUNTOSTRA'+i).html(obj[i].PUNTOSTRA);
+      var detalles = document.getElementById("DETALLES"+i);
+      detalles.setAttribute("href","Detalles");
+      detalles.setAttribute("value", "Detalles");
+    }
+    }
+  });
+});
+</script>
 </html>

@@ -7,14 +7,6 @@
 
   $row = array();
 
-  if (!empty($_POST)){
-    $Pfecha1 = null;
-    $Pfecha2 = null;
-  }else{
-    $Pfecha1 = $_POST["date1"];
-    $Pfecha2 = $_POST["date2"];
-  }
-
 
   //se crea la sentencia SQL
   $sql = "SELECT FREPUNTOS.FECHA, FREPUNTOS.DOCUMENTO, FREPUNTOS.SUCURSAL, FREPUNTOS.ARTICULO, FREPUNTOS.MONTO, FREPUNTOSV.PUNTOSOBT, FREPUNTOSV.PUNTOSTRA FROM FREPUNTOS INNER JOIN FREPUNTOSV ON FREPUNTOS.CLIENTE = FREPUNTOSV.CLIENTE WHERE FREPUNTOS.CLIENTE = ?";
@@ -37,7 +29,7 @@
     //se retorna el $result;
     $result = json_encode($row);
     echo ($result);
-    header('location: ../historial.php');
+    header('location: ../mostrarhistorial.php');
 
   }else{
     //si el statement da error
