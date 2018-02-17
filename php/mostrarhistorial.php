@@ -85,16 +85,10 @@
            <br></br>
            <div id="myTabContent" class="tab-content" style="text-align:center;">
              <div class="tab-pane active in" id="home">
-               <f
-               orm id="date" action="metodos/getHistorial.php" method="post" name="date">
-                 <input id="date1" name="date1" type="date" data-date-inline-picker="true" />
-                 <input id="date2" name="date2" type="date" data-date-inline-picker="true" />
-                 <br></br>
-                 	<div>
-               	    <button type="submit" class="btn btn-primary">Generar historial</button>
-                    <br></br>
-               	</div>
-               </form>
+               	<div>
+             	    <button  class="btn btn-primary"  href="historial.php">Nueva Consulta</button>
+                  <br></br>
+             	</div>
              </div>
            </div>
          </div>

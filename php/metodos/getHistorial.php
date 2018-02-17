@@ -29,7 +29,7 @@
     //se retorna el $result;
     $result = json_encode($row);
     echo ($result);
-    header('location: ../mostrarhistorial.php');
+  //  header('location: ../mostrarhistorial.php');
 
   }else{
     //si el statement da error
