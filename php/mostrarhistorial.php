@@ -86,7 +86,7 @@
            <div id="myTabContent" class="tab-content" style="text-align:center;">
              <div class="tab-pane active in" id="home">
                	<div>
-             	    <button  class="btn btn-primary"  href="historial.php">Nueva Consulta</button>
+             	    <button  class="btn btn-primary" onclick="window.location.href='historial.php'">Nueva Consulta</button>
                   <br></br>
              	</div>
              </div>

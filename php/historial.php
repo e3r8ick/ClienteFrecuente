@@ -86,8 +86,8 @@
            <div id="myTabContent" class="tab-content" style="text-align:center;">
              <div class="tab-pane active in" id="home">
                <form id="date" action="metodos/setFechas.php" method="post" name="date">
-                 <input id="date1" name="date1" type="date" data-date-inline-picker="true" />
-                 <input id="date2" name="date2" type="date" data-date-inline-picker="true" />
+                 <input id="date1" name="date1" type="date" data-date-inline-picker="true" required/>
+                 <input id="date2" name="date2" type="date" data-date-inline-picker="true" required/>
                  <br></br>
                  	<div>
                	    <button type="submit" class="btn btn-primary">Generar historial</button>
