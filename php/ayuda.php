@@ -88,15 +88,15 @@
            </ul>
            <div id="myTabContent" class="tab-content">
              <div class="tab-pane active in" id="home">
-               <form id="tab">
+               <form id="tab" action="metodos/setFechas.php" method="post">
                    <label>Código de Cliente</label>
-                   <input id="COD_CLIENTE" type="text" class="input-xlarge" readonly>
+                   <input name="COD_CLIENTE "id="COD_CLIENTE" type="text" class="input-xlarge" readonly>
                     <br></br>
                    <label>Nombre</label>
-                   <input type="text" id="NOMBRE" class="input-xlarge" readonly>
+                   <input type="text" name="NOMBRE" id="NOMBRE" class="input-xlarge" readonly>
                     <br></br>
                    <label>Descripción del problema</label>
-                   <textarea value="Smith" rows="3" class="input-xlarge">
+                   <textarea name="MENSAJE" id="MENSAJE" value="Smith" rows="3" class="input-xlarge">
                    </textarea>
                    <br></br>
                  	<div>
