@@ -88,7 +88,7 @@
            </ul>
            <div id="myTabContent" class="tab-content">
              <div class="tab-pane active in" id="home">
-               <form id="tab" action="metodos/setFechas.php" method="post">
+               <form id="tab" action="metodos/enviarCorreo.php" method="post">
                    <label>Código de Cliente</label>
                    <input name="COD_CLIENTE "id="COD_CLIENTE" type="text" class="input-xlarge" readonly>
                     <br></br>
