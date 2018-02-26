@@ -122,6 +122,8 @@ $(document).ready(function () {
     var obj = $.parseJSON(data);
     // Obtener la referencia del elemento body
     var body = document.getElementsByTagName("body")[0];
+    var center = document.createElement("center");
+    body.appendChild(center);
 
     // Crea un elemento <table> y un elemento <tbody>
     var tabla   = document.getElementById("historial");
@@ -163,7 +165,7 @@ $(document).ready(function () {
     // posiciona el <tbody> debajo del elemento <table>
     tabla.appendChild(tblBody);
     // appends <table> into <body>
-    body.appendChild(tabla);
+  center.appendChild(tabla);
     // modifica el atributo "border" de la tabla y lo fija a "2";
     tabla.setAttribute("border", "2");
 
@@ -178,10 +180,17 @@ $(document).ready(function () {
       $('#MONTO'+i).html(obj[i].MONTO);
       $('#PUNTOSOBT'+i).html(obj[i].PUNTOSOBT);
       $('#PUNTOSTRA'+i).html(obj[i].PUNTOSTRA);
-      /*var detalles = document.getElementById("DETALLES"+i);
-      detalles.innerText = "DETALLES";
-      detalles.setAttribute("href"," ");*/
     }
+    //boton para imprimir
+    var imprimir = document.createElement("button");
+    imprimir.innerText = "Imprimir";
+    imprimir.setAttribute("align","center");
+
+    //br para tener mas espacio
+    var espacio = document.createElement("br");
+    //appende de los elementos
+    center.appendChild(espacio);
+    center.appendChild(imprimir);
     }
   });
 });
