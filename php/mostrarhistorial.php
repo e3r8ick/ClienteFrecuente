@@ -100,6 +100,7 @@
    <tr>
     <th>FECHA</th>
     <th>DOCUMENTO</th>
+    <th>COMPAÑIA</th>
     <th>SUCURSAL</th>
     <th>DESCRIPCIÓN</th>
     <th>MONTO</th>
@@ -127,23 +128,32 @@ $(document).ready(function () {
     var tblBody = document.createElement("tbody");
 
     //creamos un array con los titulos de cada linea
-    var titulos = ["FECHA", "DOCUMENTO", "SUCURSAL", "ARTICULO", "MONTO", "PUNTOSOBT", "PUNTOSTRA", "DETALLES"];
+    var titulos = ["FECHA", "DOCUMENTO","DES_CIA", "DESCRIPCION", "ARTICULO", "MONTO", "PUNTOSOBT", "PUNTOSTRA", "DETALLES"];
 
     // Crea las celdas
     for (var i = 0; i < obj.length; i++) {
       // Crea las hileras de la tabla
       var hilera = document.createElement("tr");
 
-      for (var j = 0; j < 8; j++) {
+      //boton para detalles
+      var boton = document.createElement("button");
+      boton.innerText = "Detalles";
+      for (var j = 0; j < titulos.length; j++) {
         // Crea un elemento <td> y un nodo de texto, haz que el nodo de
         // texto sea el contenido de <td>, ubica el elemento <td> al final
         // de la hilera de la table
         var celda = document.createElement("td");
         var id = document.createElement("em");
-        id.setAttribute("id", titulos[j]+i);
+        if(j==((titulos.length)-1)){
+          boton.setAttribute("id", titulos[j]+i);
+          celda.appendChild(boton);
+          hilera.appendChild(celda);
+        }else{
+          id.setAttribute("id", titulos[j]+i);
 
-        celda.appendChild(id);
-        hilera.appendChild(celda);
+          celda.appendChild(id);
+          hilera.appendChild(celda);
+        }
       }
 
       // agrega la hilera al final de la tabla (al final del elemento tblbody)
@@ -162,14 +172,15 @@ $(document).ready(function () {
     for(i=0; i<obj.length; i++){
       $('#FECHA'+i).html(obj[i].FECHA);
       $('#DOCUMENTO'+i).html(obj[i].DOCUMENTO);
-      $('#SUCURSAL'+i).html(obj[i].SUCURSAL);
+      $('#DES_CIA'+i).html(obj[i].DES_CIA);
+      $('#DESCRIPCION'+i).html(obj[i].DESCRIPCION);
       $('#ARTICULO'+i).html(obj[i].ARTICULO);
       $('#MONTO'+i).html(obj[i].MONTO);
       $('#PUNTOSOBT'+i).html(obj[i].PUNTOSOBT);
       $('#PUNTOSTRA'+i).html(obj[i].PUNTOSTRA);
-      var detalles = document.getElementById("DETALLES"+i);
-      detalles.setAttribute("href","Detalles");
-      detalles.setAttribute("value", "Detalles");
+      /*var detalles = document.getElementById("DETALLES"+i);
+      detalles.innerText = "DETALLES";
+      detalles.setAttribute("href"," ");*/
     }
     }
   });
