@@ -15,7 +15,8 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
 	// se establecen las variables de POST en variables locales.
 	$user = $_POST['username'];
-	$pass = $_POST['password'];
+	#hash de las contraseñas
+	$pass = md5($_POST['password']);
 
 	//se incluye una sola vez la clase conexion y la clase de metodos, para poder accesar a sus funciones.
 	require_once ('../conexion/conexion.php');
@@ -45,17 +46,17 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
 		}else{
 			//se redirecciona al login con un mensaje de error
-			header('location: ../../index.php?msg=DATOS INCORRECTOS1.');
+			header('location: ../../index.php?msg=DATOS INCORRECTOS1');
 		}
 
 	}else{
 		//se redirecciona al login con un mensaje de error
-		header('location: ../../index.php?msg=DATOS INCORRECTOS2.');
+		header('location: ../../index.php?msg=DATOS INCORRECTOS2');
 	}
 
 }else{
 	//se redirecciona al login con un mensaje de error
-	header('location: ../../index.php?msg=DEBE LLENAR AMBOS CAMPOS.');
+	header('location: ../../index.php?msg=DEBE LLENAR AMBOS CAMPOS');
 }
 
 ?>

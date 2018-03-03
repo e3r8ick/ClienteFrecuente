@@ -15,7 +15,12 @@
   //se valida si se ha iniciado sesion.
   if (!isset($_SESSION['username'])) {
   	//si no existe la sesion, se redireciona al usuario con el mensaje de que inicie sesion.
-  	header('location: ../index.php?msg=Favor Iniciar Sesion.');
+  	header('location: ../index.php?msg=Favor Iniciar Sesion');
+  }
+  else if ($_COOKIE["COD_CLIENTE"]==null){
+    session_destroy();
+    header('location: ../index.php?msg=SesionExp');
+
   }
   ?>
 

@@ -44,7 +44,7 @@ public function LoginUser($Ppassword, $Pusuario){
 
 }
 
-public function RegisterUser( $Pusuario, $Ppassword, $PpasswordC){
+public function RegisterUser( $Pusuario, $Ppassword){
 
   echo "<script>console.log( 'Debug Objects: " . "register". "' );</script>";
 

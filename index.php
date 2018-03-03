@@ -43,6 +43,9 @@
 		else if ((res[1].localeCompare("DATOS%20INCORRECTOS1"))==0) {
 			alert("Usuario o Contraseña Incorrecto");
 		}
+		else if ((res[1].localeCompare("SesionExp"))==0) {
+			alert("Sesión Expirada");
+		}
 	}
 	</script>
 </body>
