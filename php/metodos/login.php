@@ -36,13 +36,15 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
 			//se establecen las variables de sesion iniciales.
 			$_SESSION['username'] = $result['COD_CLIENTE'];
-			//$_SESSION['nombre-usuario'] = $result['DES_USUARIO'];
-
+			//si el usuario es 001 el admin se direcciona al admin
+			if((strcmp ($_SESSION['username'], "001"))==0){
+				header('location: ../admin.php');
+			}else{
+				// se redirecciona a la pagina de inicio del usuario.
+				header('location: ../perfil.php');
+			}
 			//seteamos el cookie del codigod e Cliente
 			setcookie("COD_CLIENTE", $_SESSION['username'], time() + 86400, "/");
-
-			//y se redirecciona a la pagina de inicio del usuario.
-			header('location: ../perfil.php');
 
 		}else{
 			//se redirecciona al login con un mensaje de error

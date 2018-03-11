@@ -23,6 +23,8 @@
     <input type="text" id="username" name="username" class="login-input" placeholder="Cod Cliente" autofocus required="true">
     <input type="password" id="password" name="password" class="login-input" placeholder="Contraseña" required="true">
     <input type="password" id="passwordC" name="passwordC" class="login-input" placeholder="Confirmar Contraseña" required="true">
+		<input type="submit" value="Registrar" class="login-button">
+		<p class="login-lost"><a href="../index.php">¿Ya tienes cuenta? Iniciar Sesión</a></p>
 
     <?php
       //se incluyen los archivos necesarios.
@@ -30,8 +32,6 @@
       require_once ('conexion/metodos.php');
       echo "<script>console.log( 'Debug Objects: " . "sirve1". "' );</script>";
     ?>
-
-    <input type="submit" value="Registrar" class="login-button">
   </form>
 
   <script>

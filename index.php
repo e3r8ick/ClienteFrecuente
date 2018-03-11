@@ -24,7 +24,7 @@
     <input type="text" name="username" id="username" class="login-input" placeholder="Cod Cliente" autofocus required="true">
     <input type="password" name="password" id="password" class="login-input" placeholder="Contraseña" required="true">
     <input value="Ingresar" class="login-button"  type="submit">
-    <p class="login-lost"><a href="php/registro.php">¿No tiene cuenta? Registrar</a></p>
+    <p class="login-lost"><a href="php/registro.php">¿No tienes cuenta? Registrar</a></p>
 		<?php
       //se incluyen los archivos necesarios.
       require_once ('php/conexion/conexion.php');

@@ -36,7 +36,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['pass
 		//se establecen las variables de sesion iniciales.
 		if($result['COD_CLIENTE']==null){
 			header('location: ../registro.php?msg=CodCliente');
-		}cccx
+		}
 		$_SESSION['username'] = $result['COD_CLIENTE'];
 		//$_SESSION['nombre-usuario'] = $result['DES_USUARIO'];
 
