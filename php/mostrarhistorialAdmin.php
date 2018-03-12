@@ -20,7 +20,6 @@
   else if ($_COOKIE["COD_CLIENTE"]==null){
     session_destroy();
     header('location: ../index.php?msg=SesionExp');
-
   }
   ?>
 
@@ -45,12 +44,7 @@
 
     <nav>
     <ul class="menu">
-   <li><a href="../index.php"><i class="icon-home"></i>INICIO</a>
-   </li>
-  <li><a  href="perfil.php"><i class="icon-user"></i>PEFIL</a></li>
-  </li>
-  <li><a  href="historial.php"><i class="icon-list-ul"></i>HISTORIAL DE TRANSACCIONES</a></li>
-  <li><a  href="ayuda.php"><i class="icon-envelope-alt"></i>AYUDA</a></li>
+  <li><a  href="admin.php"><i class="icon-list-ul"></i>HISTORIAL DE TRANSACCIONES</a></li>
   <li><a  href="#" onclick="DoLogout()"><i class="icon-off"></i>CERRAR SESIÓN</a></li>
   </ul>
   </nav>
@@ -89,7 +83,7 @@
            <div id="myTabContent" class="tab-content" style="text-align:center;">
              <div class="tab-pane active in" id="home">
                	<div>
-             	    <button  class="btn btn-primary" onclick="window.location.href='historial.php'">Nueva Consulta</button>
+             	    <button  class="btn btn-primary" onclick="window.location.href='admin.php'">Nueva Consulta</button>
                   <br></br>
              	</div>
              </div>
@@ -103,6 +97,7 @@
    <tr>
     <th>FECHA</th>
     <th>DOCUMENTO</th>
+    <th>CLIENTE</th>
     <th>COMPAÑIA</th>
     <th>SUCURSAL</th>
     <th>DESCRIPCIÓN</th>
@@ -133,7 +128,7 @@ $(document).ready(function () {
     var tblBody = document.createElement("tbody");
 
     //creamos un array con los titulos de cada linea
-    var titulos = ["FECHA", "DOCUMENTO","DES_CIA", "DESCRIPCION", "ARTICULO", "MONTO", "PUNTOSOBT", "PUNTOSTRA", "DETALLES"];
+    var titulos = ["FECHA", "DOCUMENTO", "CLIENTE", "DES_CIA", "DESCRIPCION", "ARTICULO", "MONTO", "PUNTOSOBT", "PUNTOSTRA", "DETALLES"];
 
     // Crea las celdas
     for (var i = 0; i < obj.length; i++) {
@@ -177,6 +172,7 @@ $(document).ready(function () {
     for(i=0; i<obj.length; i++){
       $('#FECHA'+i).html(obj[i].FECHA);
       $('#DOCUMENTO'+i).html(obj[i].DOCUMENTO);
+      $('#CLIENTE'+i).html(obj[i].CLIENTE);
       $('#DES_CIA'+i).html(obj[i].DES_CIA);
       $('#DESCRIPCION'+i).html(obj[i].DESCRIPCION);
       $('#ARTICULO'+i).html(obj[i].ARTICULO);

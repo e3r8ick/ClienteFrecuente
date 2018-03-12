@@ -4,9 +4,10 @@
 
 session_start();
 session_destroy();
-if (isset($_GET['no-cod'])) {
-	header('location: ../index.php?msg= USUARIO NO TIENE CODIGO DE AGENTE.');
-}else{
-	header('location: ../../index.php?msg= SESION FINALIZADA CORRECTAMENTE.');
-}
+setcookie("COD_CLIENTE", "", time()-3600,'/');
+setcookie("NOM_CLIENTE", "", time()-3600,'/');
+setcookie("FECHA1", "", time()-3600,'/');
+setcookie("ADMIN", "", time()-3600,'/');
+setcookie("FECHA2", "", time()-3600,'/');
+header('location: ../../index.php?msg= SESION FINALIZADA CORRECTAMENTE.');
 ?>

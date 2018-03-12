@@ -67,8 +67,6 @@
        var mensaje = confirm("¿Desea cerrar sesión?");
        //Detectamos si el usuario acepto el mensaje
        if (mensaje) {
-         document.cookie = "COD_CLIENTE" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-         document.cookie = "NOM_CLIENTE" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
          window.location.replace("metodos/logout.php");
        }
        //Detectamos si el usuario denegó el mensaje

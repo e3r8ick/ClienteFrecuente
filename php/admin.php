@@ -44,12 +44,7 @@
 
     <nav>
     <ul class="menu">
-   <li><a href="../index.php"><i class="icon-home"></i>INICIO</a>
-   </li>
-  <li><a  href="perfil.php"><i class="icon-user"></i>PEFIL</a></li>
-  </li>
-  <li><a  href="historial.php"><i class="icon-list-ul"></i>HISTORIAL DE TRANSACCIONES</a></li>
-  <li><a  href="ayuda.php"><i class="icon-envelope-alt"></i>AYUDA</a></li>
+  <li><a  href="admin.php"><i class="icon-list-ul"></i>HISTORIAL DE TRANSACCIONES</a></li>
   <li><a  href="#" onclick="DoLogout()"><i class="icon-off"></i>CERRAR SESIÓN</a></li>
   </ul>
   </nav>
@@ -63,8 +58,6 @@
        var mensaje = confirm("¿Desea cerrar sesión?");
        //Detectamos si el usuario acepto el mensaje
        if (mensaje) {
-         document.cookie = "COD_CLIENTE" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-         document.cookie = "NOM_CLIENTE" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
          window.location.replace("metodos/logout.php");
        }
        //Detectamos si el usuario denegó el mensaje
@@ -90,6 +83,7 @@
            <div id="myTabContent" class="tab-content" style="text-align:center;">
              <div class="tab-pane active in" id="home">
                <form id="date" action="metodos/setFechas.php" method="post" name="date">
+                 Código Cliente: <input name="COD_CLIENTE" id="COD_CLIENTE" type="text" placeholder="Opcional"><br></br>
                  <input id="date1" name="date1" type="date" data-date-inline-picker="true" required/>
                  <input id="date2" name="date2" type="date" data-date-inline-picker="true" required/>
                  <br></br>
