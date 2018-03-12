@@ -37,17 +37,16 @@ class pdf extends FPDF
       $this->Cell(40,5,"linea 3",1);
       $this->Cell(40,5,"linea 4",1);
    }
-}
-   //Creación del objeto de la clase heredada
-    $pdf=new PDF();
-    //Títulos de las columnas
-    $header=array('Columna 1','Columna 2','Columna 3','Columna 4');
-    $pdf->AliasNbPages();
-    //Primera página
-    $pdf->AddPage();
-    $pdf->SetY(65);
-    //$pdf->AddPage();
-    $pdf->TablaBasica($header);
-
-$pdf->Output();
+  }
+  //Creación del objeto de la clase heredada
+  $pdf=new PDF();
+  //Títulos de las columnas
+  $header=array('Columna 1','Columna 2','Columna 3','Columna 4');
+  $pdf->AliasNbPages();
+  //Primera página
+  $pdf->AddPage();
+  $pdf->SetY(65);
+  //$pdf->AddPage();
+  $pdf->TablaBasica($header);
+  $pdf->Output();
 ?>
