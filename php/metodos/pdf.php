@@ -6,11 +6,17 @@ class pdf extends FPDF
    function Header()
    {
 
-       $this->Image('../../images/lanco.png',10,8,33);
+       $this->Image('../../images/lanco.png',75,8,60);
 
-      $this->SetFont('Arial','B',12);
+      $this->SetFont('Arial','B',10);
 
-      $this->Cell(30,10,'Title',1,0,'C');
+      $this->Cell(30,7,'Fecha Inicio',1,0,'C');
+      $this->Ln();
+      $this->Cell(30,7,'01/01/2018',1,0,'C');
+      $this->Ln();
+      $this->Cell(30,7,'Fecha Final',1,0,'C');
+      $this->Ln();
+      $this->Cell(30,7,'02/03/2018',1,0,'C');
 
    }
 }
