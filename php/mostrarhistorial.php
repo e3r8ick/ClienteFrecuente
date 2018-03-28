@@ -184,6 +184,11 @@ $(document).ready(function () {
       $('#PUNTOSOBT'+i).html(obj[i].PUNTOSOBT);
       $('#PUNTOSTRA'+i).html(obj[i].PUNTOSTRA);
     }
+
+    //form para envair a Imprimir
+    var form = document.createElement("form");
+    form.setAttribute("action","metodos/pdf.php");
+    form.setAttribute("method","post");
     //boton para imprimir
     var imprimir = document.createElement("button");
     imprimir.innerText = "Imprimir";
@@ -193,7 +198,8 @@ $(document).ready(function () {
     var espacio = document.createElement("br");
     //appende de los elementos
     center.appendChild(espacio);
-    center.appendChild(imprimir);
+    center.appendChild(form);
+    form.appendChild(imprimir);
     }
   });
 });

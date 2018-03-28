@@ -37,7 +37,7 @@
 
 </head>
 
- <body>
+ <body onload="error();">
 
  <div class="mainWrap">
 
@@ -71,6 +71,14 @@
          window.location.replace("perfil.php");
     }
   }
+
+  function error(){
+		var direccion = String(document.location);
+		var res = direccion.split("msg=");
+		if((res[1].localeCompare("FECHA%20INCORRECTA"))==0){
+			alert("Fecha final debe ser mayor a la inicial");
+		}
+	}
   </script>
   </ul>
   </nav>
