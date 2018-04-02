@@ -1,0 +1,18 @@
+Agregar columna ULTIMO_ENVIO (date);
+
+
+CREATE OR REPLACE VIEW FREPUNTOSV
+(CIA, CLIENTE, PUNTOSOBT, PUNTOSTRA, COMPRASTRA,
+ PUNTOSCAM, ULTIMACOMPRA, TOTALCOMPRAS, TOTALOBSEQUIO)
+AS
+Select Cia, Cliente,
+          Sum(Decode(Origen, 'F', Puntos, 'ND', Puntos, 'P', 0, 'V', 0, -Puntos)) PuntosObt,
+          Sum(PuntosTra) PuntosTra,
+          Sum(Decode(PuntosTra, 0, 0, Monto+Impuesto-MontoPago)) ComprasTra,
+          Sum(Decode(Origen, 'P', Puntos, 'V', Puntos, 0)) PuntosCam,
+          Max(Decode(Origen, 'F', Fecha, Null)) UltimaCompra,
+          Sum(Decode(Origen, 'F', Monto+Impuesto, 'ND', Monto+Impuesto,
+                     'P', 0, 'V', 0, -Monto-Impuesto)) TotalCompras,
+          Sum(Decode(Origen, 'P', Monto, 'V', Monto, 0)) TotalObsequio
+   From FrePuntos
+   Group by Cia, Cliente

@@ -30,7 +30,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['pass
 		$metodos = new Metodos();
 		//se obtienen el usuario que coincide en el usuario, clave y cia.
 		$result = $metodos->RegisterUser($user,$pass);
-		$result = $metodos->LoginUser($pass,$user);
+		//$result = $metodos->LoginUser($pass,$user);
 
 
 		//se establecen las variables de sesion iniciales.
@@ -53,6 +53,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['pass
 		//se redirecciona al login con un mensaje de error
 		header('location: ../registro.php?msg=DEBE LLENAR TODOS LOS CAMPOS');
 }
+header('location: ../../index.php?msg=Iniciar');
 return $result;
 
 ?>

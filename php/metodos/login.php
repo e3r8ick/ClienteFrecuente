@@ -43,10 +43,9 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 			}else{
 				// se redirecciona a la pagina de inicio del usuario.
 				header('location: ../perfil.php');
+				//seteamos el cookie del codigod e Cliente
+				setcookie("COD_CLIENTE", $_SESSION['username'], time() + 86400, "/");
 			}
-			//seteamos el cookie del codigod e Cliente
-			setcookie("COD_CLIENTE", $_SESSION['username'], time() + 86400, "/");
-
 		}else{
 			//se redirecciona al login con un mensaje de error
 			header('location: ../../index.php?msg=DATOS INCORRECTOS1');

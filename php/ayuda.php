@@ -51,8 +51,6 @@
 
     <nav>
     <ul class="menu">
-   <li><a href="../index.php"><i class="icon-home"></i>INICIO</a>
-   </li>
   <li><a  href="perfil.php"><i class="icon-user"></i>PEFIL</a></li>
   </li>
   <li><a  href="historial.php"><i class="icon-list-ul"></i>HISTORIAL DE TRANSACCIONES</a></li>
@@ -96,7 +94,7 @@
                    <input name="COD_CLIENTE "id="COD_CLIENTE" type="text" class="input-xlarge" readonly>
                     <br></br>
                    <label>Nombre</label>
-                   <input type="text" name="NOMBRE" id="NOMBRE" class="input-xlarge" readonly>
+                   <input type="text" name="NOMBRE" id="NOMBRE" size="40" class="input-xlarge" readonly>
                     <br></br>
                    <label>Descripción del problema</label>
                    <textarea name="MENSAJE" id="MENSAJE" value="Smith" rows="3" class="input-xlarge">
@@ -122,7 +120,11 @@
    //obtenemos el COD_CLIENTE y el NOM_CLIENTE
    usuarioC.setAttribute("value", getCookie("COD_CLIENTE"));
    //hacemos un replace porque el cookie se guarda con un +
-   var nom = getCookie("NOM_CLIENTE").replace("+", " ");
+   var nom = getCookie("NOM_CLIENTE");
+   var cantidad = nom.split("+").length-1;
+   for(i = 0 ;i < cantidad; i++){
+     nom = nom.replace("+"," ");
+   }
    usuarioN.setAttribute("value", nom);
  });
 

@@ -352,5 +352,5 @@ class pdf extends FPDF
   $pdf->SetY(65);
   $pdf->Datos($header);
   $pdf->Historial($header);
-  $pdf->Output();
+  $pdf->Output('I',$_COOKIE["COD_CLIENTE"].'.pdf');
 ?>

@@ -29,7 +29,6 @@
       //se incluyen los archivos necesarios.
       require_once ('php/conexion/conexion.php');
   		require_once ('php/conexion/metodos.php');
-      echo "<script>console.log( 'Debug Objects: " . "sirve1". "' );</script>";
     ?>
   </form>
 
@@ -45,6 +44,9 @@
 		}
 		else if ((res[1].localeCompare("SesionExp"))==0) {
 			alert("Sesión Expirada");
+		}
+		else if ((res[1].localeCompare("Iniciar"))==0) {
+			alert("Su cuenta ha sido creada, por favor Iniciar Sesión");
 		}
 	}
 	</script>

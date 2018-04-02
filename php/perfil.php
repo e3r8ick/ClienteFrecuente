@@ -45,8 +45,6 @@
 
     <nav>
     <ul class="menu">
-   <li><a href="../index.php"><i class="icon-home"></i>INICIO</a>
-   </li>
   <li><a  href="perfil.php"><i class="icon-user"></i>PEFIL</a></li>
   <li><a  href="historial.php"><i class="icon-list-ul"></i>HISTORIAL DE TRANSACCIONES</a></li>
   <li><a  href="ayuda.php"><i class="icon-envelope-alt"></i>AYUDA</a></li>
