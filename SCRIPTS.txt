@@ -24,4 +24,5 @@ Select Cia, Cliente,
 ->Validaciones de búsquedas vacías
 ->PDF del ADMIN
 ->Completar envio de correos semanales-quincenales-mensuales-bimestrales
-->Envio de correos de ayuda 
+->Envio de correos de ayuda
+->Detalles de cada compra
