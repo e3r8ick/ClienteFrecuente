@@ -16,3 +16,12 @@ Select Cia, Cliente,
           Sum(Decode(Origen, 'P', Monto, 'V', Monto, 0)) TotalObsequio
    From FrePuntos
    Group by Cia, Cliente
+
+
+#################TO DO#####################################
+
+->Agregar Puntos activos y puntos bloqueados siempre visibles
+->Validaciones de búsquedas vacías
+->PDF del ADMIN
+->Completar envio de correos semanales-quincenales-mensuales-bimestrales
+->Envio de correos de ayuda 
