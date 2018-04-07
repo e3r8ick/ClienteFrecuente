@@ -8,8 +8,6 @@ class Metodos{
 //se reciben por parametros las variables necesarias para realizar la validacion del login.
 public function LoginUser($Ppassword, $Pusuario){
 
-  echo "<script>console.log( 'Debug Objects: " . "Login2". "' );</script>";
-
   //se limpian las variables
   $Ppassword = $this->limpiarVariable($Ppassword);
   $Pusuario = $this->limpiarVariable($Pusuario);
@@ -34,11 +32,9 @@ public function LoginUser($Ppassword, $Pusuario){
     $conexion = null;
 
     //se retorna el $result;
-    echo "<script>console.log( 'Debug Objects: " . "result". "' );</script>";
     return $result;
   }else{
     //si el statement da error, se retorna falso.
-    echo "<script>console.log( 'Debug Objects: " . "falso". "' );</script>";
     return false;
   }
 
@@ -90,7 +86,7 @@ public function RegisterUser( $Pusuario, $Ppassword){
   catch(PDOException $e){
       echo "<script>console.log( 'Debug Objects: " .$e->getMessage(). "' );</script>";
   }
-  
+
   $conexion = null;
 
   return true;

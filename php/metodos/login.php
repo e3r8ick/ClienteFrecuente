@@ -39,6 +39,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 			//si el usuario es 001 el admin se direcciona al admin
 			if((strcmp ($_SESSION['username'], "001"))==0){
 				setcookie("ADMIN", "1", time() + 86400,"/");
+				setcookie("COD_CLIENTE", $_SESSION['username'], time() + 86400, "/");
 				header('location: ../admin.php');
 			}else{
 				// se redirecciona a la pagina de inicio del usuario.

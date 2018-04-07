@@ -140,7 +140,7 @@ $(document).ready(function () {
     type: "GET",
     url: "metodos/getDatos.php",
     success: function(data){
-    console.log("data: "+data);
+    //console.log("data: "+data);
     var obj = $.parseJSON(data);
     $('#NOM_CLIENTE').html(obj.NOM_CLIENTE);
     $('#COD_CLIENTE').html(obj.COD_CLIENTE);

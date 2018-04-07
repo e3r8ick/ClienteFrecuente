@@ -120,84 +120,89 @@ $(document).ready(function () {
     type: "GET",
     url: "metodos/getHistorial.php",
     success: function(data){
-    var obj = $.parseJSON(data);
-    // Obtener la referencia del elemento body
-    var body = document.getElementsByTagName("body")[0];
-    var center = document.createElement("center");
-    body.appendChild(center);
+    if(data.length<=2){
+      alert("No hay compras en las fecha seleccionadas");
+      location.href ="historial.php";
+    }else{
+      var obj = $.parseJSON(data);
+      // Obtener la referencia del elemento body
+      var body = document.getElementsByTagName("body")[0];
+      var center = document.createElement("center");
+      body.appendChild(center);
 
-    // Crea un elemento <table> y un elemento <tbody>
-    var tabla   = document.getElementById("historial");
-    var tblBody = document.createElement("tbody");
+      // Crea un elemento <table> y un elemento <tbody>
+      var tabla   = document.getElementById("historial");
+      var tblBody = document.createElement("tbody");
 
-    //creamos un array con los titulos de cada linea
-    var titulos = ["FECHA", "DOCUMENTO","DES_CIA", "DESCRIPCION", "ARTICULO", "MONTO", "PUNTOSOBT", "PUNTOSTRA", "DETALLES"];
+      //creamos un array con los titulos de cada linea
+      var titulos = ["FECHA", "DOCUMENTO","DES_CIA", "DESCRIPCION", "ARTICULO", "MONTO", "PUNTOSOBT", "PUNTOSTRA", "DETALLES"];
 
-    // Crea las celdas
-    for (var i = 0; i < obj.length; i++) {
-      // Crea las hileras de la tabla
-      var hilera = document.createElement("tr");
+      // Crea las celdas
+      for (var i = 0; i < obj.length; i++) {
+        // Crea las hileras de la tabla
+        var hilera = document.createElement("tr");
 
-      //boton para detalles
-      var boton = document.createElement("button");
-      boton.innerText = "Detalles";
-      for (var j = 0; j < titulos.length; j++) {
-        // Crea un elemento <td> y un nodo de texto, haz que el nodo de
-        // texto sea el contenido de <td>, ubica el elemento <td> al final
-        // de la hilera de la table
-        var celda = document.createElement("td");
-        var id = document.createElement("em");
-        if(j==((titulos.length)-1)){
-          boton.setAttribute("id", titulos[j]+i);
-          celda.appendChild(boton);
-          hilera.appendChild(celda);
-        }else{
-          id.setAttribute("id", titulos[j]+i);
+        //boton para detalles
+        var boton = document.createElement("button");
+        boton.innerText = "Detalles";
+        for (var j = 0; j < titulos.length; j++) {
+          // Crea un elemento <td> y un nodo de texto, haz que el nodo de
+          // texto sea el contenido de <td>, ubica el elemento <td> al final
+          // de la hilera de la table
+          var celda = document.createElement("td");
+          var id = document.createElement("em");
+          if(j==((titulos.length)-1)){
+            boton.setAttribute("id", titulos[j]+i);
+            celda.appendChild(boton);
+            hilera.appendChild(celda);
+          }else{
+            id.setAttribute("id", titulos[j]+i);
 
-          celda.appendChild(id);
-          hilera.appendChild(celda);
+            celda.appendChild(id);
+            hilera.appendChild(celda);
+          }
         }
+
+        // agrega la hilera al final de la tabla (al final del elemento tblbody)
+        tblBody.appendChild(hilera);
       }
 
-      // agrega la hilera al final de la tabla (al final del elemento tblbody)
-      tblBody.appendChild(hilera);
-    }
+      // posiciona el <tbody> debajo del elemento <table>
+      tabla.appendChild(tblBody);
+      // appends <table> into <body>
+      center.appendChild(tabla);
+      // modifica el atributo "border" de la tabla y lo fija a "2";
+      tabla.setAttribute("border", "2");
 
-    // posiciona el <tbody> debajo del elemento <table>
-    tabla.appendChild(tblBody);
-    // appends <table> into <body>
-  center.appendChild(tabla);
-    // modifica el atributo "border" de la tabla y lo fija a "2";
-    tabla.setAttribute("border", "2");
+      //seteamos los valores
+      //console.log("data: "+data);
+      for(i=0; i<obj.length; i++){
+        $('#FECHA'+i).html(obj[i].FECHA);
+        $('#DOCUMENTO'+i).html(obj[i].DOCUMENTO);
+        $('#DES_CIA'+i).html(obj[i].DES_CIA);
+        $('#DESCRIPCION'+i).html(obj[i].DESCRIPCION);
+        $('#ARTICULO'+i).html(obj[i].ARTICULO);
+        $('#MONTO'+i).html(obj[i].MONTO);
+        $('#PUNTOSOBT'+i).html(obj[i].PUNTOSOBT);
+        $('#PUNTOSTRA'+i).html(obj[i].PUNTOSTRA);
+      }
 
-    //seteamos los valores
-    console.log("data: "+data);
-    for(i=0; i<obj.length; i++){
-      $('#FECHA'+i).html(obj[i].FECHA);
-      $('#DOCUMENTO'+i).html(obj[i].DOCUMENTO);
-      $('#DES_CIA'+i).html(obj[i].DES_CIA);
-      $('#DESCRIPCION'+i).html(obj[i].DESCRIPCION);
-      $('#ARTICULO'+i).html(obj[i].ARTICULO);
-      $('#MONTO'+i).html(obj[i].MONTO);
-      $('#PUNTOSOBT'+i).html(obj[i].PUNTOSOBT);
-      $('#PUNTOSTRA'+i).html(obj[i].PUNTOSTRA);
-    }
+      //form para envair a Imprimir
+      var form = document.createElement("form");
+      form.setAttribute("action","metodos/pdf.php");
+      form.setAttribute("method","post");
+      //boton para imprimir
+      var imprimir = document.createElement("button");
+      imprimir.innerText = "Imprimir";
+      imprimir.setAttribute("align","center");
 
-    //form para envair a Imprimir
-    var form = document.createElement("form");
-    form.setAttribute("action","metodos/pdf.php");
-    form.setAttribute("method","post");
-    //boton para imprimir
-    var imprimir = document.createElement("button");
-    imprimir.innerText = "Imprimir";
-    imprimir.setAttribute("align","center");
-
-    //br para tener mas espacio
-    var espacio = document.createElement("br");
-    //appende de los elementos
-    center.appendChild(espacio);
-    center.appendChild(form);
-    form.appendChild(imprimir);
+      //br para tener mas espacio
+      var espacio = document.createElement("br");
+      //appende de los elementos
+      center.appendChild(espacio);
+      center.appendChild(form);
+      form.appendChild(imprimir);
+      }
     }
   });
 });
