@@ -1,4 +1,6 @@
 Agregar columna ULTIMO_ENVIO (date);
+Agregar columna CONTRASENIA VARCHAR2(60 BYTE)
+
 
 
 CREATE OR REPLACE VIEW FREPUNTOSV

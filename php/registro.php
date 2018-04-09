@@ -30,7 +30,6 @@
       //se incluyen los archivos necesarios.
       require_once ('conexion/conexion.php');
       require_once ('conexion/metodos.php');
-      echo "<script>console.log( 'Debug Objects: " . "sirve1". "' );</script>";
     ?>
   </form>
 
