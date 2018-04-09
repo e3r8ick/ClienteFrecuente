@@ -96,9 +96,7 @@
                    <label>Nombre</label>
                    <input type="text" name="NOMBRE" id="NOMBRE" size="40" class="input-xlarge" readonly>
                     <br></br>
-                   <label>Descripción del problema</label>
-                   <textarea name="MENSAJE" id="MENSAJE" value="Smith" rows="3" class="input-xlarge">
-                   </textarea>
+                   <textarea name="MENSAJE" id="MENSAJE" cols="65" rows="10" placeholder="Descripción del Problema" class="input-xlarge"></textarea>
                    <br></br>
                  	<div>
                	    <button class="btn btn-primary">Enviar</button>
