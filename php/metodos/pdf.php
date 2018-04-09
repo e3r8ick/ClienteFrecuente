@@ -337,6 +337,17 @@ class pdf extends FPDF
         }
         $this->Ln();
       }
+      $this->Ln();
+      $this->Ln();
+      $this->Ln();
+      $this->Cell(45,5);
+      $this->Cell(50,5,"Puntos Disponibles",1);
+      $this->Cell(50,5,"Puntos Bloqueados",1);
+      $this->Ln();
+      $this->Cell(45,5);
+      $this->Cell(50,5,$row[0][6],1);
+      $this->Cell(50,5,$row[0][7],1);
+      $this->Ln();
       //}
      }
     }

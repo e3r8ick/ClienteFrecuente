@@ -21,7 +21,6 @@ Select Cia, Cliente,
 #################TO DO#####################################
 
 ->PDF del ADMIN
-->Completar envio de correos semanales-quincenales-mensuales-bimestrales
 ->Envio de correos de ayuda
 
 
