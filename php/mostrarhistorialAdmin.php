@@ -149,7 +149,10 @@ $(document).ready(function () {
             var celda = document.createElement("td");
             var id = document.createElement("em");
             if(j==((titulos.length)-1)){
+              var form = document.createElement("form");
               boton.setAttribute("id", titulos[j]+i);
+              boton.setAttribute("");
+              form.appendChild(boton);
               celda.appendChild(boton);
               hilera.appendChild(celda);
             }else{

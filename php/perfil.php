@@ -85,6 +85,14 @@
          <td><em id="NOM_CLIENTE"></em></td>
        </tr>
        <tr>
+         <td>Puntos Activos: </td>
+         <td><em id="PUNTOSOBT"></em></td>
+       </tr>
+       <tr>
+         <td>Puntos Bloqueados: </td>
+         <td><em id="PUNTOSTRA"></em></td>
+       </tr>
+       <tr>
          <td>Cédula: </td>
          <td><em id="CEDULA"></em></td>
        </tr>
@@ -144,6 +152,8 @@ $(document).ready(function () {
     var obj = $.parseJSON(data);
     $('#NOM_CLIENTE').html(obj.NOM_CLIENTE);
     $('#COD_CLIENTE').html(obj.COD_CLIENTE);
+    $('#PUNTOSOBT').html(obj.PUNTOSOBT);
+    $('#PUNTOSTRA').html(obj.PUNTOSTRA);
     $('#EMAIL').html(obj.EMAIL);
     $('#CEDULA').html(obj.CEDULA);
     $('#NUM_TELEFONO1').html(obj.NUM_TELEFONO1);

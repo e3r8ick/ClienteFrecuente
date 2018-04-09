@@ -152,8 +152,21 @@ $(document).ready(function () {
           var celda = document.createElement("td");
           var id = document.createElement("em");
           if(j==((titulos.length)-1)){
+            var formDetalles = document.createElement("form");
+            formDetalles.setAttribute("action","metodos/detalle.php");
+            formDetalles.setAttribute("method","post");
+
+            var inputBoton = document.createElement("input");
+            inputBoton.setAttribute("type","hidden");
+            inputBoton.setAttribute("id",titulos[j]+i);
+            inputBoton.setAttribute("name","DETALLES");
+            inputBoton.setAttribute("value",i);
+
             boton.setAttribute("id", titulos[j]+i);
-            celda.appendChild(boton);
+            boton.setAttribute("type","submit");
+            formDetalles.appendChild(inputBoton);
+            formDetalles.appendChild(boton);
+            celda.appendChild(formDetalles);
             hilera.appendChild(celda);
           }else{
             id.setAttribute("id", titulos[j]+i);
@@ -202,6 +215,12 @@ $(document).ready(function () {
       center.appendChild(espacio);
       center.appendChild(form);
       form.appendChild(imprimir);
+
+      //puntos actuales
+      /*var puntosDisponibles = document.createElement("em");
+      puntosDisponibles.setAttribute("id","puntosDisponibles");
+      var puntosBloqueados = document.createElement("em");
+      puntosBloqueados.setAttribute("id","puntosBloqueados");*/
       }
     }
   });

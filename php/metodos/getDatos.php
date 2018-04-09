@@ -4,7 +4,7 @@
   $conexion = $con->get_Conexion();
 
   //se crea la sentencia SQL
-  $sql = "SELECT NOM_CLIENTE,
+  /*$sql = "SELECT NOM_CLIENTE,
           COD_CLIENTE,
           CEDULA,
           NUM_TELEFONO1,
@@ -14,7 +14,23 @@
           DIRECCION_ENVIO,
           FREC_ESTADO
           FROM GEN_CLIENTE
-          WHERE COD_CLIENTE = ?";
+          WHERE COD_CLIENTE = ?";*/
+
+  $sql = "SELECT NOM_CLIENTE,
+          COD_CLIENTE,
+          PUNTOSOBT,
+          PUNTOSTRA,
+          CEDULA,
+          NUM_TELEFONO1,
+          NUM_TELEFONO2,
+          NUM_FAX,
+          EMAIL,
+          DIRECCION_ENVIO,
+          FREC_ESTADO
+          FROM GEN_CLIENTE INNER JOIN FREPUNTOSV
+          ON COD_CLIENTE = CLIENTE
+          WHERE COD_CLIENTE = ?
+          ORDER BY ULTIMACOMPRA";
 
   //se prepara el statement con la sentencia previamente creada
   $stmt = $conexion->prepare($sql);
