@@ -75,7 +75,7 @@
  </div><!--end mainWrap-->
 
 
- <table style="margin: 0 auto;">
+ <center style="margin: 0 auto;">
    <br></br>
     <tr>
       <td align="center" style="text-align:center;">
@@ -95,7 +95,16 @@
          </div>
       </td>
     </tr>
- </table>
+ </center>
+
+ <center>
+   <br></br>
+   <h3 >Puntos Disponibles:
+   <em id="PUNTOSOBTOTALES"></em></h3>
+   <h3 >Puntos Bloqueados:
+   <em id="PUNTOSTRANTOTALES"></em></h3>
+   <br></br>
+ </center>
 
  <table id="historial" class="odd" style="margin: 0 auto;">
    <tr>
@@ -209,18 +218,32 @@ $(document).ready(function () {
       imprimir.innerText = "Imprimir";
       imprimir.setAttribute("align","center");
 
+      //valores de puntos actuales
+      /*var puntosA = document.createElement("center");
+      var PuntosDH = document.createElement("h3");
+      var PuntosBH = document.createElement("h3");
+      var PuntosD = document.createElement("em");
+      var PuntosB = document.createElement("em");
+      PuntosD.setAttribute("id","PUNTOSOBTOTALES");
+      PuntosB.setAttribute("id","PUNTOSTRANTOTALES");
+      PuntosDH.appendChild(PuntosD);
+      PuntosBH.appendChild(PuntosB);
+      puntosA.appendChild(PuntosDH);
+      puntosA.appendChild(PuntosBH);*/
+
+      //asignación de los valores de puntos actuales
+      $('#PUNTOSOBTOTALES').html(obj[0].PUNTOSOBTOTALES);
+      $('#PUNTOSTRANTOTALES').html(obj[0].PUNTOSTRANTOTALES);
+
       //br para tener mas espacio
       var espacio = document.createElement("br");
       //appende de los elementos
+      //center.appendChild(puntosA);
       center.appendChild(espacio);
       center.appendChild(form);
       form.appendChild(imprimir);
 
-      //puntos actuales
-      /*var puntosDisponibles = document.createElement("em");
-      puntosDisponibles.setAttribute("id","puntosDisponibles");
-      var puntosBloqueados = document.createElement("em");
-      puntosBloqueados.setAttribute("id","puntosBloqueados");*/
+
       }
     }
   });
