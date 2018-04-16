@@ -97,14 +97,14 @@
     </tr>
  </center>
 
- <center>
+ <!--center>
    <br></br>
    <h3 >Puntos Disponibles:
    <em id="PUNTOSOBTOTALES"></em></h3>
    <h3 >Puntos Bloqueados:
    <em id="PUNTOSTRANTOTALES"></em></h3>
    <br></br>
- </center>
+ </center-->
 
  <table id="historial" class="odd" style="margin: 0 auto;">
    <tr>
@@ -218,28 +218,33 @@ $(document).ready(function () {
       imprimir.innerText = "Imprimir";
       imprimir.setAttribute("align","center");
 
-      //valores de puntos actuales
-      /*var puntosA = document.createElement("center");
-      var PuntosDH = document.createElement("h3");
-      var PuntosBH = document.createElement("h3");
+      //valores de puntos
+      var espacio = document.createElement("br");
+      //appende de los elementos
+      center.appendChild(espacio);
+      var PuntosDH = document.createElement("h4");
+      var PuntosBH = document.createElement("h4");
+      PuntosDH.setAttribute("id","PuntosDH");
+      PuntosBH.setAttribute("id","PuntosBH");
       var PuntosD = document.createElement("em");
       var PuntosB = document.createElement("em");
       PuntosD.setAttribute("id","PUNTOSOBTOTALES");
       PuntosB.setAttribute("id","PUNTOSTRANTOTALES");
+      center.appendChild(PuntosDH);
+      center.appendChild(PuntosBH);
+      document.getElementById("PuntosDH").innerHTML= "Puntos Disponibles: ";
+      document.getElementById("PuntosBH").innerHTML= "Puntos Bloqueados: ";
       PuntosDH.appendChild(PuntosD);
       PuntosBH.appendChild(PuntosB);
-      puntosA.appendChild(PuntosDH);
-      puntosA.appendChild(PuntosBH);*/
 
       //asignación de los valores de puntos actuales
       $('#PUNTOSOBTOTALES').html(obj[0].PUNTOSOBTOTALES);
       $('#PUNTOSTRANTOTALES').html(obj[0].PUNTOSTRANTOTALES);
 
       //br para tener mas espacio
-      var espacio = document.createElement("br");
+      var espacio2 = document.createElement("br");
       //appende de los elementos
-      //center.appendChild(puntosA);
-      center.appendChild(espacio);
+      center.appendChild(espacio2);
       center.appendChild(form);
       form.appendChild(imprimir);
 
