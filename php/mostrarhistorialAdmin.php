@@ -93,14 +93,6 @@
     </tr>
  </center>
 
- <center>
-   <br></br>
-   <h3 >Puntos Disponibles:
-   <em id="PUNTOSOBTOTALES"></em></h3>
-   <h3 >Puntos Bloqueados:
-   <em id="PUNTOSTRANTOTALES"></em></h3>
-   <br></br>
- </center>
 
  <table id="historial" class="odd" style="margin: 0 auto;">
    <tr>
@@ -158,11 +150,21 @@ $(document).ready(function () {
             var celda = document.createElement("td");
             var id = document.createElement("em");
             if(j==((titulos.length)-1)){
-              var form = document.createElement("form");
+              var formDetalles = document.createElement("form");
+              formDetalles.setAttribute("action","metodos/detalleAdmin.php");
+              formDetalles.setAttribute("method","post");
+
+              var inputBoton = document.createElement("input");
+              inputBoton.setAttribute("type","hidden");
+              inputBoton.setAttribute("id",titulos[j]+i);
+              inputBoton.setAttribute("name","DETALLES");
+              inputBoton.setAttribute("value",i);
+
               boton.setAttribute("id", titulos[j]+i);
-              //boton.setAttribute("");
-              form.appendChild(boton);
-              celda.appendChild(boton);
+              boton.setAttribute("type","submit");
+              formDetalles.appendChild(inputBoton);
+              formDetalles.appendChild(boton);
+              celda.appendChild(formDetalles);
               hilera.appendChild(celda);
             }else{
               id.setAttribute("id", titulos[j]+i);
@@ -196,9 +198,6 @@ $(document).ready(function () {
           $('#PUNTOSOBT'+i).html(obj[i].PUNTOSOBT);
           $('#PUNTOSTRA'+i).html(obj[i].PUNTOSTRA);
         }
-        //asignación de los valores de puntos actuales
-        $('#PUNTOSOBTOTALES').html(obj[0].PUNTOSOBTOTALES);
-        $('#PUNTOSTRANTOTALES').html(obj[0].PUNTOSTRANTOTALES);
         //form para envair a Imprimir
         var form = document.createElement("form");
         form.setAttribute("action","metodos/pdf.php");
