@@ -5,6 +5,7 @@
 session_start();
 session_destroy();
 setcookie("COD_CLIENTE", "", time()-3600,'/');
+setcookie("COD_CLIENTE", "", time()-3600,'/ClienteFrecuente/php/metodos');
 setcookie("NOM_CLIENTE", "", time()-3600,'/');
 setcookie("FECHA1", "", time()-3600,'/');
 setcookie("ADMIN", "", time()-3600,'/');

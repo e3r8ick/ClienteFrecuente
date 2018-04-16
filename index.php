@@ -46,6 +46,7 @@
 			alert("Sesión Expirada");
 		}
 		else if ((res[1].localeCompare("Iniciar"))==0) {
+			window.location.replace("php/metodos/logout.php");
 			alert("Su cuenta ha sido creada, por favor Iniciar Sesión");
 		}
 	}

@@ -43,7 +43,7 @@
 
 </head>
 
- <body>
+ <body onload="error();">
 
  <div class="mainWrap">
 
@@ -89,7 +89,7 @@
            </ul>
            <div id="myTabContent" class="tab-content">
              <div class="tab-pane active in" id="home">
-               <form id="tab" action="metodos/enviarCorreo.php" method="post">
+               <form id="tab" action="metodos/correoAyuda.php" method="post">
                    <label>Código de Cliente</label>
                    <input name="COD_CLIENTE "id="COD_CLIENTE" type="text" class="input-xlarge" readonly>
                     <br></br>
@@ -129,6 +129,14 @@
  function getCookie(name) {
     var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
     return v ? v[2] : null;
+}
+
+function error(){
+  var direccion = String(document.location);
+  var res = direccion.split("msg=");
+  if((res[1].localeCompare("CorreoEnviado"))==0){
+    alert("Su correo fue enviado exitosamente");
+  }
 }
  </script>
 

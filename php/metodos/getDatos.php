@@ -4,7 +4,7 @@
   $conexion = $con->get_Conexion();
 
   //se crea la sentencia SQL
-  /*$sql = "SELECT NOM_CLIENTE,
+  $sql1 = "SELECT NOM_CLIENTE,
           COD_CLIENTE,
           CEDULA,
           NUM_TELEFONO1,
@@ -14,9 +14,9 @@
           DIRECCION_ENVIO,
           FREC_ESTADO
           FROM GEN_CLIENTE
-          WHERE COD_CLIENTE = ?";*/
+          WHERE COD_CLIENTE = ?";
 
-  $sql = "SELECT NOM_CLIENTE,
+  $sql2 = "SELECT NOM_CLIENTE,
           COD_CLIENTE,
           PUNTOSOBT,
           PUNTOSTRA,
@@ -29,11 +29,10 @@
           FREC_ESTADO
           FROM GEN_CLIENTE INNER JOIN FREPUNTOSV
           ON COD_CLIENTE = CLIENTE
-          WHERE COD_CLIENTE = ?
-          ORDER BY ULTIMACOMPRA";
+          WHERE COD_CLIENTE = ?";
 
   //se prepara el statement con la sentencia previamente creada
-  $stmt = $conexion->prepare($sql);
+  $stmt = $conexion->prepare($sql2);
 
   if ($stmt) {
     //se realiza un execute y un fetch donde se obtienen los datos de la primera fila
@@ -41,6 +40,12 @@
     //en el execute se agregan las variables por medio de un array.
     $stmt->execute(array($_COOKIE["COD_CLIENTE"]));
     $result = $stmt->fetch();
+
+    if(count($result[0])==0){
+      $stmt = $conexion->prepare($sql1);
+      $stmt->execute(array($_COOKIE["COD_CLIENTE"]));
+      $result = $stmt->fetch();
+    }
 
     //se cierra la conexion
     $conexion = null;
