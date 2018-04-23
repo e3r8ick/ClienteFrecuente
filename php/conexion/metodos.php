@@ -51,36 +51,16 @@ public function RegisterUser( $Pusuario, $Ppassword){
   try{
     //se crea la sentencia SQL
     //$sql = "UPDATE GEN_CLIENTE SET CONTRASENIA='".$Ppassword."' WHERE COD_CLIENTE='".$Pusuario."';";
-    $sql = "UPDATE GEN_CLIENTE SET CONTRASENIA = ? WHERE COD_CLIENTE = ?";
+    $sql = "UPDATE GEN_CLIENTE SET CONTRASENIA = ?, ULTIMO_ENVIO = TO_DATE(?, 'DD/MM/YY') WHERE COD_CLIENTE = ?";
     //prepara el statement
     $stmt = $conexion->prepare($sql);
+    //fecha de Envio$date = getdate();
+    $dateS = $date['mday']."/".$date['mon']."/".$date['year'];
     // ejecuta el query
-    $stmt->execute(array($Ppassword, $Pusuario));
+    $stmt->execute(array($Ppassword, $dateS, $Pusuario));
     //echo "<script>console.log( 'Debug Objects: " .$sql. "' );</script>";
     //se setea el cookie con el codigo de usuario
     setcookie("COD_CLIENTE", $Pusuario);
-    echo "<script>console.log( 'Debug Objects: " .$stmt->rowCount(). "' );</script>";
-  }
-  catch(PDOException $e){
-      echo "<script>console.log( 'Debug Objects: " .$e->getMessage(). "' );</script>";
-  }
-
-  $conexion = null;
-
-
-  $con = new Conexion();
-  $conexion = $con->get_Conexion();
-  try{
-    //setear la fecha para el envio del estado de cuenta
-    //$sql = "UPDATE GEN_CLIENTE SET CONTRASENIA='".$Ppassword."' WHERE COD_CLIENTE='".$Pusuario."';";
-    $date = getdate();
-    $dateS = $date['mday']."/".$date['mon']."/".$date['year'];
-
-    $sql = "UPDATE GEN_CLIENTE SET ULTIMO_ENVIO = ? WHERE COD_CLIENTE = ?";
-    //prepara el statement
-    $stmt = $conexion->prepare($sql);
-    // ejecuta el query
-    $stmt->execute(array($dateS, $Pusuario));
     echo "<script>console.log( 'Debug Objects: " .$stmt->rowCount(). "' );</script>";
   }
   catch(PDOException $e){
