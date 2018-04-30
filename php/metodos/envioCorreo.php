@@ -346,4 +346,7 @@
 
     $conexion = null;
   }
+
+    echo("<script>window.opener = this;window.close();</script>");
+  //echo "<script lenguaje=\"JavaScript\">window.close();</script>";
 ?>
