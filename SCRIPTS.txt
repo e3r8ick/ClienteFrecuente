@@ -138,6 +138,7 @@ $db_password = "LANCOP1978";
 
 ->PDF del ADMIN
 ->Envio de correos de ayuda
+->Espacio al final del perfil
 
 
 usuario nuevolcr201

@@ -54,7 +54,8 @@ public function RegisterUser( $Pusuario, $Ppassword){
     $sql = "UPDATE GEN_CLIENTE SET CONTRASENIA = ?, ULTIMO_ENVIO = TO_DATE(?, 'DD/MM/YY') WHERE COD_CLIENTE = ?";
     //prepara el statement
     $stmt = $conexion->prepare($sql);
-    //fecha de Envio$date = getdate();
+    //fecha de Envio\
+    $date = getdate();
     $dateS = $date['mday']."/".$date['mon']."/".$date['year'];
     // ejecuta el query
     $stmt->execute(array($Ppassword, $dateS, $Pusuario));

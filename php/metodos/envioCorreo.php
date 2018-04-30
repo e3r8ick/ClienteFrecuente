@@ -152,34 +152,50 @@
        $this->Cell(23,5,"Puntos Gastados",1);
        $this->Ln();
 
-        //for($y=0;$y<30;$y++){
-        for($i=0, $size=count($row); $i<$size; $i++){
-          for($j=0; $j<8; $j++){
-            if($j==0 or $j==5){
-              $this->Cell(15,5,$row[$i][$j],1);
-            }elseif($j==2){
-              $this->Cell(30,5,$row[$i][$j],1);
-            }elseif ($j==1 or $j==3) {
-              $this->Cell(20,5,$row[$i][$j],1);
-            }elseif($j==4){
-              $this->Cell(35,5,$row[$i][$j],1);
-            }else{
-              $this->Cell(23,5,$row[$i][$j],1);
+
+       if(count($row)!=0){
+          for($i=0, $size=count($row); $i<$size; $i++){
+            for($j=0; $j<8; $j++){
+              if($j==0 or $j==5){
+                $this->Cell(15,5,$row[$i][$j],1);
+              }elseif($j==2){
+                $this->Cell(30,5,$row[$i][$j],1);
+              }elseif ($j==1 or $j==3) {
+                $this->Cell(20,5,$row[$i][$j],1);
+              }elseif($j==4){
+                $this->Cell(35,5,$row[$i][$j],1);
+              }else{
+                $this->Cell(23,5,$row[$i][$j],1);
+              }
             }
+            $this->Ln();
           }
           $this->Ln();
+          $this->Ln();
+          $this->Ln();
+          $this->Cell(45,5);
+          $this->Cell(50,5,"Puntos Disponibles",1);
+          $this->Cell(50,5,"Puntos Bloqueados",1);
+          $this->Ln();
+          $this->Cell(45,5);
+          $this->Cell(50,5,$row[0][6],1);
+          $this->Cell(50,5,$row[0][7],1);
+          $this->Ln();
+        }else{
+          $this->Cell(181,5,"No ha realizado ninguna compra este periodo",1,'C');
+
+          $this->Ln();
+          $this->Ln();
+          $this->Ln();
+          $this->Cell(45,5);
+          $this->Cell(50,5,"Puntos Disponibles",1);
+          $this->Cell(50,5,"Puntos Bloqueados",1);
+          $this->Ln();
+          $this->Cell(45,5);
+          $this->Cell(50,5,"0",1);
+          $this->Cell(50,5,"0",1);
+          $this->Ln();
         }
-        $this->Ln();
-        $this->Ln();
-        $this->Ln();
-        $this->Cell(45,5);
-        $this->Cell(50,5,"Puntos Disponibles",1);
-        $this->Cell(50,5,"Puntos Bloqueados",1);
-        $this->Ln();
-        $this->Cell(45,5);
-        $this->Cell(50,5,$row[0][6],1);
-        $this->Cell(50,5,$row[0][7],1);
-        $this->Ln();
       }
     }
 
@@ -231,7 +247,7 @@
       $fechaES = $fechaE[0]."/".$fechaE[1]."/".(intval($fechaE[2])+2000);
       $fechaE = date_create($fechaE[0]."-".$fechaE[1]."-".(intval($fechaE[2])+2000));
       $intervalo = date_diff($fechaE, $fechaA);
-      echo($intervalo->format('%R%a días'));
+      //echo($intervalo->format('%R%a días'));
 
       if($result[$i]!=null){
         if (strcmp($result[$i][0],"Semanal")==0) {

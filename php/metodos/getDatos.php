@@ -41,7 +41,7 @@
     $stmt->execute(array($_COOKIE["COD_CLIENTE"]));
     $result = $stmt->fetch();
 
-    if(count($result[0])==0){
+    if((count($result[0])==0) or (($result)==false)){
       $stmt = $conexion->prepare($sql1);
       $stmt->execute(array($_COOKIE["COD_CLIENTE"]));
       $result = $stmt->fetch();
