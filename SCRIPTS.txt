@@ -142,3 +142,8 @@ $db_password = "LANCOP1978";
 
 
 usuario nuevolcr201
+
+
+PAra LANCO
+usuario LANCO
+pass LCR2001

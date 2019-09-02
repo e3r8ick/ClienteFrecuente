@@ -16,9 +16,9 @@ class Conexion{
 		 )';
 	 //este usuario solo debe poder realizar selects.
 	 //se determina el usuario de la base de datos
-	 $db_username = "LANCO";
+	 $db_username = "CETRENSS";
 	 //se determina la clave del usuario de la Base de datos.
-	 $db_password = "LANCO";
+	 $db_password = "CETRENSS";
 	 //se realiza un try catch de
 	 try{
 			 $conn = new PDO("oci:dbname=".$tns,$db_username,$db_password);

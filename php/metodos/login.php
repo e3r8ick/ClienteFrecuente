@@ -16,7 +16,8 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 	// se establecen las variables de POST en variables locales.
 	$user = $_POST['username'];
 	#hash de las contraseñas
-	$pass = md5($_POST['password']);
+	//$pass = md5($_POST['password']);
+	$pass = $_POST['password'];
 
 	//se incluye una sola vez la clase conexion y la clase de metodos, para poder accesar a sus funciones.
 	require_once ('../conexion/conexion.php');
