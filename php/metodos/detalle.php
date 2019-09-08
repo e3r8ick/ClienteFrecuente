@@ -115,7 +115,7 @@ class detalle extends FPDF
              FROM FREPUNTOS INNER JOIN FREPUNTOSV ON FREPUNTOS.CLIENTE = FREPUNTOSV.CLIENTE
              INNER JOIN FRECOMPANIA ON FREPUNTOS.CIA = FRECOMPANIA.COD_CIA
              INNER JOIN FRESUCURSAL ON FREPUNTOS.SUCURSAL = FRESUCURSAL.SUCURSAL
-             WHERE (FREPUNTOS.CLIENTE = ?) AND (FREPUNTOS.FECHA BETWEEN ? AND ?)";
+             WHERE (FREPUNTOS.CLIENTE = ?) AND (to_char(FREPUNTOS.FECHA,'YYYYMMDD') BETWEEN ? AND ?)";
 
        //se crea la sentencia SQL para admin con nombre
        $sqlAdminN = "SELECT FREPUNTOS.FECHA,
@@ -130,7 +130,7 @@ class detalle extends FPDF
                FROM FREPUNTOS INNER JOIN FREPUNTOSV ON FREPUNTOS.CLIENTE = FREPUNTOSV.CLIENTE
                INNER JOIN FRECOMPANIA ON FREPUNTOS.CIA = FRECOMPANIA.COD_CIA
                INNER JOIN FRESUCURSAL ON FREPUNTOS.SUCURSAL = FRESUCURSAL.SUCURSAL
-               WHERE (FREPUNTOS.CLIENTE = ?) AND (FREPUNTOS.FECHA BETWEEN ? AND ?)";
+               WHERE (FREPUNTOS.CLIENTE = ?) AND (to_char(FREPUNTOS.FECHA,'YYYYMMDD') BETWEEN ? AND ?)";
 
        //se crea la sentencia SQL para admin solo con fechas
        $sqlAdmin = "SELECT FREPUNTOS.FECHA,
@@ -145,7 +145,7 @@ class detalle extends FPDF
                FROM FREPUNTOS INNER JOIN FREPUNTOSV ON FREPUNTOS.CLIENTE = FREPUNTOSV.CLIENTE
                INNER JOIN FRECOMPANIA ON FREPUNTOS.CIA = FRECOMPANIA.COD_CIA
                INNER JOIN FRESUCURSAL ON FREPUNTOS.SUCURSAL = FRESUCURSAL.SUCURSAL
-               WHERE (FREPUNTOS.FECHA BETWEEN ? AND ?)";
+               WHERE (to_char(FREPUNTOS.FECHA,'YYYYMMDD') BETWEEN ? AND ?)";
 
       //caso de admin
        if((isset($_COOKIE["ADMIN"])) and ((strcmp($_COOKIE["ADMIN"],"1"))==0)){
@@ -161,8 +161,8 @@ class detalle extends FPDF
            $fecha1 = str_split($fecha1,2);
            $fecha2 = str_split($fecha2,2);
            //formamos la fecha con el formato correto
-           $fecha1 = $fecha1[3]."/".$fecha1[2]."/".$fecha1[1];
-           $fecha2 = $fecha2[3]."/".$fecha2[2]."/".$fecha2[1];
+           $fecha1 = "20".$fecha1[1].$fecha1[2].$fecha1[3];
+           $fecha2 = "20".$fecha2[1].$fecha2[2].$fecha2[3];
 
            if ($stmt) {
              //se realiza un execute y un fetch donde se obtienen los datos de la primera fila
@@ -223,8 +223,8 @@ class detalle extends FPDF
            $fecha1 = str_split($fecha1,2);
            $fecha2 = str_split($fecha2,2);
            //formamos la fecha con el formato correto
-           $fecha1 = $fecha1[3]."/".$fecha1[2]."/".$fecha1[1];
-           $fecha2 = $fecha2[3]."/".$fecha2[2]."/".$fecha2[1];
+           $fecha1 = "20".$fecha1[1].$fecha1[2].$fecha1[3];
+           $fecha2 = "20".$fecha2[1].$fecha2[2].$fecha2[3];
 
            if ($stmt) {
              //se realiza un execute y un fetch donde se obtienen los datos de la primera fila
@@ -297,8 +297,8 @@ class detalle extends FPDF
        $fecha1 = str_split($fecha1,2);
        $fecha2 = str_split($fecha2,2);
        //formamos la fecha con el formato correto
-       $fecha1 = $fecha1[3]."/".$fecha1[2]."/".$fecha1[1];
-       $fecha2 = $fecha2[3]."/".$fecha2[2]."/".$fecha2[1];
+       $fecha1 = "20".$fecha1[1].$fecha1[2].$fecha1[3];
+       $fecha2 = "20".$fecha2[1].$fecha2[2].$fecha2[3];
        if ($stmt) {
          //se realiza un execute y un fetch donde se obtienen los datos de la primera fila
          //que coincida con el usuario y la clave ademas del cia.

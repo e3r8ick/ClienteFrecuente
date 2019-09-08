@@ -118,7 +118,7 @@ class pdf extends FPDF
              INNER JOIN FRECOMPANIA ON FREPUNTOS.CIA = FRECOMPANIA.COD_CIA
              INNER JOIN FRESUCURSAL ON FREPUNTOS.SUCURSAL = FRESUCURSAL.SUCURSAL
              WHERE (FREPUNTOS.CLIENTE = ?) AND (to_char(FREPUNTOS.FECHA,'YYYYMMDD') BETWEEN ? AND ?)";
-             
+
        //se crea la sentencia SQL para admin con nombre
        $sqlAdminN = "SELECT FREPUNTOS.FECHA,
                FREPUNTOS.DOCUMENTO,
@@ -167,8 +167,8 @@ class pdf extends FPDF
            $fecha1 = str_split($fecha1,2);
            $fecha2 = str_split($fecha2,2);
            //formamos la fecha con el formato correto
-           $fecha1 = $fecha1[3]."/".$fecha1[2]."/".$fecha1[1];
-           $fecha2 = $fecha2[3]."/".$fecha2[2]."/".$fecha2[1];
+           $fecha1 = "20".$fecha1[1].$fecha1[2].$fecha1[3];
+           $fecha2 = "20".$fecha2[1].$fecha2[2].$fecha2[3];
 
            if ($stmt) {
              //se realiza un execute y un fetch donde se obtienen los datos de la primera fila
@@ -229,8 +229,8 @@ class pdf extends FPDF
            $fecha1 = str_split($fecha1,2);
            $fecha2 = str_split($fecha2,2);
            //formamos la fecha con el formato correto
-           $fecha1 = $fecha1[3]."/".$fecha1[2]."/".$fecha1[1];
-           $fecha2 = $fecha2[3]."/".$fecha2[2]."/".$fecha2[1];
+           $fecha1 = "20".$fecha1[1].$fecha1[2].$fecha1[3];
+           $fecha2 = "20".$fecha2[1].$fecha2[2].$fecha2[3];
 
            if ($stmt) {
              //se realiza un execute y un fetch donde se obtienen los datos de la primera fila
@@ -295,8 +295,8 @@ class pdf extends FPDF
        $fecha1 = str_split($fecha1,2);
        $fecha2 = str_split($fecha2,2);
        //formamos la fecha con el formato correto
-       $fecha1 = $fecha1[3]."/".$fecha1[2]."/".$fecha1[1];
-       $fecha2 = $fecha2[3]."/".$fecha2[2]."/".$fecha2[1];
+       $fecha1 = "20".$fecha1[1].$fecha1[2].$fecha1[3];
+       $fecha2 = "20".$fecha2[1].$fecha2[2].$fecha2[3];
        if ($stmt) {
          //se realiza un execute y un fetch donde se obtienen los datos de la primera fila
          //que coincida con el usuario y la clave ademas del cia.
