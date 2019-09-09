@@ -18,6 +18,12 @@ public function LoginUser($Ppassword, $Pusuario){
   //se crea la sentencia SQL
   $sql = "SELECT COD_CLIENTE, CONTRASENIA FROM GEN_CLIENTE WHERE COD_CLIENTE = ? AND CONTRASENIA = ?";
 
+  //encriptacion de la contraseña
+  $hash_pass = crypt($Ppassword);
+  echo($hash_pass);
+
+  echo "<script>console.log('Debug Objects: " . $hash_pass . "' );</script>";
+
   //se prepara el statement con la sentencia previamente creada
   $stmt = $conexion->prepare($sql);
 

@@ -150,7 +150,7 @@ class detalle extends FPDF
       //caso de admin
        if((isset($_COOKIE["ADMIN"])) and ((strcmp($_COOKIE["ADMIN"],"1"))==0)){
          //caso de admin con busqueda de cliente
-         if(((strcmp($_COOKIE["COD_CLIENTE"],"001"))!=0)){
+         if(((strcmp($_COOKIE["COD_CLIENTE"],"04"))!=0)){
            $stmt = $conexion->prepare($sqlAdminN);
 
            //hay que cambiar el formato de las fechas prque se guardan de manera diferente a como se usan en Sql
@@ -211,7 +211,7 @@ class detalle extends FPDF
              echo "<script>console.log( 'Debug Objects: " . "falso". "' );</script>";
            }
            //se setea de nuevo el codigo del admin
-           setCookie("COD_CLIENTE","001", time() + 86400,"/");
+           setCookie("COD_CLIENTE","04", time() + 86400,"/");
          }else {
            $stmt = $conexion->prepare($sqlAdmin);
 
